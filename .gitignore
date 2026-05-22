@@ -2,6 +2,9 @@
 CarDashboardApp/**/ElevenLabsSecrets.plist
 **/ElevenLabsSecrets.plist
 
+# Herramientas locales
+.claude/
+
 # Xcode / Swift
 .derivedData/
 .derivedDataSim/

@@ -7,18 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A1B2C3D401234567 /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D401234568 /* ImageCacheService.swift */; };
 		AA000001 /* CarDashboardAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000001 /* CarDashboardAppApp.swift */; };
 		AA000007 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000007 /* SettingsViewModel.swift */; };
 		AA000008 /* TelemetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000008 /* TelemetryService.swift */; };
 		AA000009 /* MockTelemetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000009 /* MockTelemetryService.swift */; };
 		AA000010 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000010 /* MainTabView.swift */; };
 		AA000011 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000011 /* DashboardView.swift */; };
-		AA000069 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000069 /* FavoritesView.swift */; };
-		AA000070 /* MyPrayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000071 /* MyPrayersView.swift */; };
-		AA000071 /* PatientRecordsBrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000070 /* PatientRecordsBrowseView.swift */; };
-		AA000086 /* SmileLuxAccountStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000085 /* SmileLuxAccountStorage.swift */; };
-		AA000081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000080 /* AppDelegate.swift */; };
-		AA000084 /* PatientAvatarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000083 /* PatientAvatarStore.swift */; };
 		AA000013 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000013 /* SettingsView.swift */; };
 		AA000014 /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000014 /* GlassCard.swift */; };
 		AA000018 /* LiquidGlassTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000018 /* LiquidGlassTabBar.swift */; };
@@ -30,9 +25,9 @@
 		AA000027 /* PremiumGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000027 /* PremiumGlass.swift */; };
 		AA000028 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000028 /* ChatView.swift */; };
 		AA000030 /* ChatThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000030 /* ChatThread.swift */; };
-		AA000033 /* ChatInboxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000033 /* ChatInboxStore.swift */; };
 		AA000031 /* ChatConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000031 /* ChatConversationView.swift */; };
 		AA000032 /* ChatAvatarViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000032 /* ChatAvatarViews.swift */; };
+		AA000033 /* ChatInboxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000033 /* ChatInboxStore.swift */; };
 		AA000034 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = AG000002 /* Supabase */; };
 		AA000035 /* SupabaseClientProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000034 /* SupabaseClientProvider.swift */; };
 		AA000036 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000035 /* AuthViewModel.swift */; };
@@ -42,30 +37,33 @@
 		AA000044 /* LeadsCrmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000043 /* LeadsCrmService.swift */; };
 		AA000045 /* LeadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000044 /* LeadsViewModel.swift */; };
 		AA000046 /* LeadsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000045 /* LeadsListView.swift */; };
-		A1B2C3D401234567 /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D401234568 /* ImageCacheService.swift */; };
 		AA000054 /* RevolutBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000053 /* RevolutBackgroundView.swift */; };
 		AA000055 /* DashboardHomeNotificationsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000054 /* DashboardHomeNotificationsSection.swift */; };
 		AA000056 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000055 /* UserProfileService.swift */; };
-		AA000058 /* Fondo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AB000057 /* Fondo.mp4 */; };
-		AA000072 /* video-inicio.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AB000072 /* video-inicio.mp4 */; };
+		AA000058 /* Assets.xcassets/Fondo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AB000057 /* Assets.xcassets/Fondo.mp4 */; };
 		AA000059 /* DashboardHomeVideoBackdrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000058 /* DashboardHomeVideoBackdrop.swift */; };
-		AA000073 /* AppLaunchSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000073 /* AppLaunchSplashView.swift */; };
 		AA000064 /* AppShellRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000063 /* AppShellRouter.swift */; };
 		AA000065 /* ClinicHubSheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000064 /* ClinicHubSheets.swift */; };
 		AA000066 /* PatientRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000065 /* PatientRecord.swift */; };
 		AA000067 /* PatientsRegistryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000066 /* PatientsRegistryViewModel.swift */; };
 		AA000068 /* PatientListingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000067 /* PatientListingRow.swift */; };
-		AA000075 /* login.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AB000075 /* login.mp4 */; };
+		AA000069 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000069 /* FavoritesView.swift */; };
+		AA000070 /* MyPrayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000071 /* MyPrayersView.swift */; };
+		AA000071 /* PatientRecordsBrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000070 /* PatientRecordsBrowseView.swift */; };
+		AA000072 /* Assets.xcassets/video-inicio.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AB000072 /* Assets.xcassets/video-inicio.mp4 */; };
+		AA000073 /* AppLaunchSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000073 /* AppLaunchSplashView.swift */; };
+		AA000075 /* Assets.xcassets/login.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AB000075 /* Assets.xcassets/login.mp4 */; };
+		AA000081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000080 /* AppDelegate.swift */; };
+		AA000084 /* PatientAvatarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000083 /* PatientAvatarStore.swift */; };
+		AA000086 /* SmileLuxAccountStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000085 /* SmileLuxAccountStorage.swift */; };
 		AA000087 /* StatusBarLightContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000086 /* StatusBarLightContent.swift */; };
 		AA000088 /* JewishPhraseLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000087 /* JewishPhraseLibrary.swift */; };
+		AA000089 /* JewishInspirationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000088 /* JewishInspirationCard.swift */; };
+		AA000096 /* TefilaPhraseWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000089 /* TefilaPhraseWidgets.swift */; };
+		AA000097 /* TefilaPhraseWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AB000098 /* TefilaPhraseWidget.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AA000103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB000022 /* Assets.xcassets */; };
 		AA000104 /* TefilaCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000099 /* TefilaCopy.swift */; };
 		AA000105 /* SpiritualCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000105 /* SpiritualCategories.swift */; };
-		AA000089 /* JewishInspirationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000088 /* JewishInspirationCard.swift */; };
-		AA000092 /* JewishPhraseLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000087 /* JewishPhraseLibrary.swift */; };
-		AA000091 /* JewishInspirationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000088 /* JewishInspirationCard.swift */; };
-		AA000096 /* TefilaPhraseWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000089 /* TefilaPhraseWidgets.swift */; };
-		AA000097 /* TefilaPhraseWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AB000098 /* TefilaPhraseWidget.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy); }; };
-		AA000103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB000022 /* Assets.xcassets */; };
 		AA000106 /* PrayerServiceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000106 /* PrayerServiceModels.swift */; };
 		AA000107 /* TefilaModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000107 /* TefilaModels.swift */; };
 		AA000108 /* PrayerCategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000108 /* PrayerCategoryDetailView.swift */; };
@@ -79,10 +77,36 @@
 		AA000116 /* SavedTefilaPrayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000116 /* SavedTefilaPrayer.swift */; };
 		AA000117 /* SavedPrayersStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000117 /* SavedPrayersStore.swift */; };
 		AA000118 /* ElevenLabsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000118 /* ElevenLabsConfig.swift */; };
+		AC000002 /* ElevenLabsSecrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC000001 /* ElevenLabsSecrets.plist */; };
 		AA000119 /* ElevenLabsSpeechClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000119 /* ElevenLabsSpeechClient.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BH000059 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BH000050;
+			remoteInfo = TefilaPhraseWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF000054 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AA000097 /* TefilaPhraseWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		A1B2C3D401234568 /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
 		AB000000 /* CarDashboardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarDashboardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB000001 /* CarDashboardAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDashboardAppApp.swift; sourceTree = "<group>"; };
 		AB000007 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -90,12 +114,6 @@
 		AB000009 /* MockTelemetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTelemetryService.swift; sourceTree = "<group>"; };
 		AB000010 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		AB000011 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
-		AB000069 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
-		AB000071 /* MyPrayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPrayersView.swift; sourceTree = "<group>"; };
-		AB000070 /* PatientRecordsBrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRecordsBrowseView.swift; sourceTree = "<group>"; };
-		AB000085 /* SmileLuxAccountStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmileLuxAccountStorage.swift; sourceTree = "<group>"; };
-		AB000080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AB000083 /* PatientAvatarStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAvatarStore.swift; sourceTree = "<group>"; };
 		AB000013 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AB000014 /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
 		AB000018 /* LiquidGlassTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidGlassTabBar.swift; sourceTree = "<group>"; };
@@ -107,9 +125,9 @@
 		AB000027 /* PremiumGlass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumGlass.swift; sourceTree = "<group>"; };
 		AB000028 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
 		AB000030 /* ChatThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatThread.swift; sourceTree = "<group>"; };
-		AB000033 /* ChatInboxStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxStore.swift; sourceTree = "<group>"; };
 		AB000031 /* ChatConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatConversationView.swift; sourceTree = "<group>"; };
 		AB000032 /* ChatAvatarViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAvatarViews.swift; sourceTree = "<group>"; };
+		AB000033 /* ChatInboxStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxStore.swift; sourceTree = "<group>"; };
 		AB000034 /* SupabaseClientProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClientProvider.swift; sourceTree = "<group>"; };
 		AB000035 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		AB000036 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -118,27 +136,32 @@
 		AB000043 /* LeadsCrmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadsCrmService.swift; sourceTree = "<group>"; };
 		AB000044 /* LeadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadsViewModel.swift; sourceTree = "<group>"; };
 		AB000045 /* LeadsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadsListView.swift; sourceTree = "<group>"; };
-		A1B2C3D401234568 /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
 		AB000053 /* RevolutBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevolutBackgroundView.swift; sourceTree = "<group>"; };
 		AB000054 /* DashboardHomeNotificationsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHomeNotificationsSection.swift; sourceTree = "<group>"; };
 		AB000055 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
-		AB000057 /* Fondo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assets.xcassets/Fondo.mp4"; sourceTree = "<group>"; };
-		AB000072 /* video-inicio.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assets.xcassets/video-inicio.mp4"; sourceTree = "<group>"; };
+		AB000057 /* Assets.xcassets/Fondo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Assets.xcassets/Fondo.mp4; sourceTree = "<group>"; };
 		AB000058 /* DashboardHomeVideoBackdrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHomeVideoBackdrop.swift; sourceTree = "<group>"; };
-		AB000073 /* AppLaunchSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchSplashView.swift; sourceTree = "<group>"; };
 		AB000063 /* AppShellRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShellRouter.swift; sourceTree = "<group>"; };
 		AB000064 /* ClinicHubSheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicHubSheets.swift; sourceTree = "<group>"; };
 		AB000065 /* PatientRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRecord.swift; sourceTree = "<group>"; };
 		AB000066 /* PatientsRegistryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsRegistryViewModel.swift; sourceTree = "<group>"; };
 		AB000067 /* PatientListingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListingRow.swift; sourceTree = "<group>"; };
-		AB000075 /* login.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assets.xcassets/login.mp4"; sourceTree = "<group>"; };
+		AB000069 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		AB000070 /* PatientRecordsBrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRecordsBrowseView.swift; sourceTree = "<group>"; };
+		AB000071 /* MyPrayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPrayersView.swift; sourceTree = "<group>"; };
+		AB000072 /* Assets.xcassets/video-inicio.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assets.xcassets/video-inicio.mp4"; sourceTree = "<group>"; };
+		AB000073 /* AppLaunchSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchSplashView.swift; sourceTree = "<group>"; };
+		AB000075 /* Assets.xcassets/login.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Assets.xcassets/login.mp4; sourceTree = "<group>"; };
+		AB000080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AB000083 /* PatientAvatarStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAvatarStore.swift; sourceTree = "<group>"; };
+		AB000085 /* SmileLuxAccountStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmileLuxAccountStorage.swift; sourceTree = "<group>"; };
 		AB000086 /* StatusBarLightContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarLightContent.swift; sourceTree = "<group>"; };
 		AB000087 /* JewishPhraseLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewishPhraseLibrary.swift; sourceTree = "<group>"; };
-		AB000099 /* TefilaCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TefilaCopy.swift; sourceTree = "<group>"; };
-		AB000105 /* SpiritualCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiritualCategories.swift; sourceTree = "<group>"; };
 		AB000088 /* JewishInspirationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewishInspirationCard.swift; sourceTree = "<group>"; };
 		AB000089 /* TefilaPhraseWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TefilaPhraseWidgets.swift; sourceTree = "<group>"; };
-		AB000098 /* TefilaPhraseWidget.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.app-extension; includeInIndex = 0; path = TefilaPhraseWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB000098 /* TefilaPhraseWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TefilaPhraseWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB000099 /* TefilaCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TefilaCopy.swift; sourceTree = "<group>"; };
+		AB000105 /* SpiritualCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiritualCategories.swift; sourceTree = "<group>"; };
 		AB000106 /* PrayerServiceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerServiceModels.swift; sourceTree = "<group>"; };
 		AB000107 /* TefilaModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TefilaModels.swift; sourceTree = "<group>"; };
 		AB000108 /* PrayerCategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerCategoryDetailView.swift; sourceTree = "<group>"; };
@@ -152,6 +175,7 @@
 		AB000116 /* SavedTefilaPrayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTefilaPrayer.swift; sourceTree = "<group>"; };
 		AB000117 /* SavedPrayersStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPrayersStore.swift; sourceTree = "<group>"; };
 		AB000118 /* ElevenLabsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevenLabsConfig.swift; sourceTree = "<group>"; };
+		AC000001 /* ElevenLabsSecrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ElevenLabsSecrets.plist; sourceTree = "<group>"; };
 		AB000119 /* ElevenLabsSpeechClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevenLabsSpeechClient.swift; sourceTree = "<group>"; };
 		TF000020 /* CarDashboardApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CarDashboardApp.entitlements; sourceTree = "<group>"; };
 		TF000021 /* TefilaPhraseWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TefilaPhraseWidget.entitlements; sourceTree = "<group>"; };
@@ -200,9 +224,9 @@
 				AD000010 /* Design */,
 				AD000008 /* Resources */,
 				AB000022 /* Assets.xcassets */,
-				AB000057 /* Fondo.mp4 */,
-				AB000072 /* video-inicio.mp4 */,
-				AB000075 /* login.mp4 */,
+				AB000057 /* Assets.xcassets/Fondo.mp4 */,
+				AB000072 /* Assets.xcassets/video-inicio.mp4 */,
+				AB000075 /* Assets.xcassets/login.mp4 */,
 				TF000020 /* CarDashboardApp.entitlements */,
 			);
 			path = CarDashboardApp;
@@ -248,6 +272,7 @@
 				AB000115 /* PrayerSpeechPlaybackController.swift */,
 				AB000117 /* SavedPrayersStore.swift */,
 				AB000118 /* ElevenLabsConfig.swift */,
+				AC000001 /* ElevenLabsSecrets.plist */,
 				AB000119 /* ElevenLabsSpeechClient.swift */,
 			);
 			path = Services;
@@ -344,20 +369,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		BF000054 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				AA000097 /* TefilaPhraseWidget.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		AE000001 /* CarDashboardApp */ = {
 			isa = PBXNativeTarget;
@@ -446,9 +457,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA000022 /* Assets.xcassets in Resources */,
-				AA000058 /* Fondo.mp4 in Resources */,
-				AA000072 /* video-inicio.mp4 in Resources */,
-				AA000075 /* login.mp4 in Resources */,
+				AA000058 /* Assets.xcassets/Fondo.mp4 in Resources */,
+				AA000072 /* Assets.xcassets/video-inicio.mp4 in Resources */,
+				AA000075 /* Assets.xcassets/login.mp4 in Resources */,
+				AC000002 /* ElevenLabsSecrets.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,16 +562,6 @@
 			targetProxy = BH000059 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXContainerItemProxy section */
-		BH000059 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AE000000 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BH000050;
-			remoteInfo = TefilaPhraseWidget;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin XCBuildConfiguration section */
 		AF000001D /* Debug */ = {
@@ -686,23 +688,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "CarDashboardApp/CarDashboardApp.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_ALLOWED = YES;
 				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Tefila;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIBackgroundModes = audio;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = LightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_CFBundleDisplayName = "Tefila";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Tefila accede a la galería cuando adjuntas una imagen en el chat.";
-				INFOPLIST_KEY_UIBackgroundModes = audio;
-				INFOPLIST_KEY_UIStatusBarStyle = LightContent;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -721,23 +722,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "CarDashboardApp/CarDashboardApp.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_ALLOWED = YES;
 				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Tefila;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UIBackgroundModes = audio;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = LightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_CFBundleDisplayName = "Tefila";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Tefila accede a la galería cuando adjuntas una imagen en el chat.";
-				INFOPLIST_KEY_UIBackgroundModes = audio;
-				INFOPLIST_KEY_UIStatusBarStyle = LightContent;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -756,13 +756,13 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CODE_SIGN_ENTITLEMENTS = "TefilaPhraseWidget/TefilaPhraseWidget.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_ALLOWED = YES;
 				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = TefilaPhraseWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
@@ -787,13 +787,13 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CODE_SIGN_ENTITLEMENTS = "TefilaPhraseWidget/TefilaPhraseWidget.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_ALLOWED = YES;
 				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = TefilaPhraseWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
