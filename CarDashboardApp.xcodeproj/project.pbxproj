@@ -61,6 +61,15 @@
 		AA000104 /* TefilaCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000099 /* TefilaCopy.swift */; };
 		AA000105 /* SpiritualCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000105 /* SpiritualCategories.swift */; };
 		AA000089 /* JewishInspirationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000088 /* JewishInspirationCard.swift */; };
+		TF000001 /* PrayerServiceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = TF000011 /* PrayerServiceModels.swift */; };
+		TF000002 /* TefilaModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = TF000012 /* TefilaModels.swift */; };
+		TF000003 /* PrayerCategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = TF000013 /* PrayerCategoryDetailView.swift */; };
+		TF000004 /* PassagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = TF000014 /* PassagesView.swift */; };
+		TF000005 /* ChoosePrayerIntentionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = TF000015 /* ChoosePrayerIntentionView.swift */; };
+		TF000006 /* PrayerRequestFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = TF000016 /* PrayerRequestFormView.swift */; };
+		TF000007 /* PrayerCheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = TF000017 /* PrayerCheckoutView.swift */; };
+		TF000008 /* PrayerAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = TF000018 /* PrayerAudioView.swift */; };
+		TF000009 /* PrayerServiceDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = TF000019 /* PrayerServiceDetailView.swift */; };
 		AA000092 /* JewishPhraseLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000087 /* JewishPhraseLibrary.swift */; };
 		AA000091 /* JewishInspirationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000088 /* JewishInspirationCard.swift */; };
 		AA000096 /* TefilaPhraseWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000089 /* TefilaPhraseWidgets.swift */; };
@@ -122,6 +131,15 @@
 		AB000087 /* JewishPhraseLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewishPhraseLibrary.swift; sourceTree = "<group>"; };
 		AB000099 /* TefilaCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TefilaCopy.swift; sourceTree = "<group>"; };
 		AB000105 /* SpiritualCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiritualCategories.swift; sourceTree = "<group>"; };
+		TF000011 /* PrayerServiceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerServiceModels.swift; sourceTree = "<group>"; };
+		TF000012 /* TefilaModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TefilaModels.swift; sourceTree = "<group>"; };
+		TF000013 /* PrayerCategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerCategoryDetailView.swift; sourceTree = "<group>"; };
+		TF000014 /* PassagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassagesView.swift; sourceTree = "<group>"; };
+		TF000015 /* ChoosePrayerIntentionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePrayerIntentionView.swift; sourceTree = "<group>"; };
+		TF000016 /* PrayerRequestFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerRequestFormView.swift; sourceTree = "<group>"; };
+		TF000017 /* PrayerCheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerCheckoutView.swift; sourceTree = "<group>"; };
+		TF000018 /* PrayerAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerAudioView.swift; sourceTree = "<group>"; };
+		TF000019 /* PrayerServiceDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerServiceDetailView.swift; sourceTree = "<group>"; };
 		AB000088 /* JewishInspirationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewishInspirationCard.swift; sourceTree = "<group>"; };
 		AB000089 /* TefilaPhraseWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TefilaPhraseWidgets.swift; sourceTree = "<group>"; };
 		AB000098 /* TefilaPhraseWidget.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.app-extension; includeInIndex = 0; path = TefilaPhraseWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +202,8 @@
 				AB000042 /* LeadCrm.swift */,
 				AB000030 /* ChatThread.swift */,
 				AB000033 /* ChatInboxStore.swift */,
+				TF000011 /* PrayerServiceModels.swift */,
+				TF000012 /* TefilaModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -230,6 +250,13 @@
 				AB000013 /* SettingsView.swift */,
 				AB000045 /* LeadsListView.swift */,
 				AB000064 /* ClinicHubSheets.swift */,
+				TF000013 /* PrayerCategoryDetailView.swift */,
+				TF000014 /* PassagesView.swift */,
+				TF000015 /* ChoosePrayerIntentionView.swift */,
+				TF000016 /* PrayerRequestFormView.swift */,
+				TF000017 /* PrayerCheckoutView.swift */,
+				TF000018 /* PrayerAudioView.swift */,
+				TF000019 /* PrayerServiceDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -470,6 +497,15 @@
 				AA000104 /* TefilaCopy.swift in Sources */,
 				AA000105 /* SpiritualCategories.swift in Sources */,
 				AA000089 /* JewishInspirationCard.swift in Sources */,
+				TF000001 /* PrayerServiceModels.swift in Sources */,
+				TF000002 /* TefilaModels.swift in Sources */,
+				TF000003 /* PrayerCategoryDetailView.swift in Sources */,
+				TF000004 /* PassagesView.swift in Sources */,
+				TF000005 /* ChoosePrayerIntentionView.swift in Sources */,
+				TF000006 /* PrayerRequestFormView.swift in Sources */,
+				TF000007 /* PrayerCheckoutView.swift in Sources */,
+				TF000008 /* PrayerAudioView.swift in Sources */,
+				TF000009 /* PrayerServiceDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

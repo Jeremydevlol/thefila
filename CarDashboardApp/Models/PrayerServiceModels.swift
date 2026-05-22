@@ -89,7 +89,7 @@ enum SacredLocation: String, CaseIterable, Identifiable {
 
 // MARK: - Servicio de oración
 
-struct PrayerService: Identifiable {
+struct PrayerService: Identifiable, Hashable, Equatable {
     let id: String
     let categoryId: String          // SpiritualCategoryID.rawValue
     let eyebrow: String             // "Tehilim", "Tikkun HaKlali", etc.
@@ -103,6 +103,9 @@ struct PrayerService: Identifiable {
     let hebrewTitle: String
     let spiritualNote: String       // Texto de bendición / fuente espiritual
     let rabbiSource: String         // "Según el Baba Sali…"
+
+    static func == (lhs: PrayerService, rhs: PrayerService) -> Bool { lhs.id == rhs.id }
+    func hash(into hasher: inout Hasher) { hasher.combine(id) }
 }
 
 // MARK: - Solicitud de oración

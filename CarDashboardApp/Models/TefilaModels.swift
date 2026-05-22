@@ -2,7 +2,7 @@ import SwiftUI
 
 // MARK: - Pasaje del Tanaj
 
-struct TanajPassage: Identifiable {
+struct TanajPassage: Identifiable, Hashable, Equatable {
     let id: String
     let title: String           // "Shema Israel"
     let reference: String       // "Devarim 6:4"
@@ -11,6 +11,9 @@ struct TanajPassage: Identifiable {
     let spanishText: String
     let tag: PassageTag
     var isFavorite: Bool = false
+
+    static func == (lhs: TanajPassage, rhs: TanajPassage) -> Bool { lhs.id == rhs.id }
+    func hash(into hasher: inout Hasher) { hasher.combine(id) }
 }
 
 enum PassageTag: String, CaseIterable {
