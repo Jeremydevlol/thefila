@@ -1,0 +1,802 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA000001 /* CarDashboardAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000001 /* CarDashboardAppApp.swift */; };
+		AA000007 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000007 /* SettingsViewModel.swift */; };
+		AA000008 /* TelemetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000008 /* TelemetryService.swift */; };
+		AA000009 /* MockTelemetryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000009 /* MockTelemetryService.swift */; };
+		AA000010 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000010 /* MainTabView.swift */; };
+		AA000011 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000011 /* DashboardView.swift */; };
+		AA000069 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000069 /* FavoritesView.swift */; };
+		AA000070 /* MyPrayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000071 /* MyPrayersView.swift */; };
+		AA000071 /* PatientRecordsBrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000070 /* PatientRecordsBrowseView.swift */; };
+		AA000086 /* SmileLuxAccountStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000085 /* SmileLuxAccountStorage.swift */; };
+		AA000081 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000080 /* AppDelegate.swift */; };
+		AA000084 /* PatientAvatarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000083 /* PatientAvatarStore.swift */; };
+		AA000013 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000013 /* SettingsView.swift */; };
+		AA000014 /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000014 /* GlassCard.swift */; };
+		AA000018 /* LiquidGlassTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000018 /* LiquidGlassTabBar.swift */; };
+		AA000020 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000020 /* SectionHeader.swift */; };
+		AA000022 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB000022 /* Assets.xcassets */; };
+		AA000023 /* RemoteAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000023 /* RemoteAssets.swift */; };
+		AA000025 /* DealershipStatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000025 /* DealershipStatsViewModel.swift */; };
+		AA000026 /* DealershipStatComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000026 /* DealershipStatComponents.swift */; };
+		AA000027 /* PremiumGlass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000027 /* PremiumGlass.swift */; };
+		AA000028 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000028 /* ChatView.swift */; };
+		AA000030 /* ChatThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000030 /* ChatThread.swift */; };
+		AA000033 /* ChatInboxStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000033 /* ChatInboxStore.swift */; };
+		AA000031 /* ChatConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000031 /* ChatConversationView.swift */; };
+		AA000032 /* ChatAvatarViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000032 /* ChatAvatarViews.swift */; };
+		AA000034 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = AG000002 /* Supabase */; };
+		AA000035 /* SupabaseClientProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000034 /* SupabaseClientProvider.swift */; };
+		AA000036 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000035 /* AuthViewModel.swift */; };
+		AA000037 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000036 /* LoginView.swift */; };
+		AA000038 /* AuthRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000037 /* AuthRootView.swift */; };
+		AA000043 /* LeadCrm.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000042 /* LeadCrm.swift */; };
+		AA000044 /* LeadsCrmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000043 /* LeadsCrmService.swift */; };
+		AA000045 /* LeadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000044 /* LeadsViewModel.swift */; };
+		AA000046 /* LeadsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000045 /* LeadsListView.swift */; };
+		A1B2C3D401234567 /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D401234568 /* ImageCacheService.swift */; };
+		AA000054 /* RevolutBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000053 /* RevolutBackgroundView.swift */; };
+		AA000055 /* DashboardHomeNotificationsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000054 /* DashboardHomeNotificationsSection.swift */; };
+		AA000056 /* UserProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000055 /* UserProfileService.swift */; };
+		AA000058 /* Fondo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AB000057 /* Fondo.mp4 */; };
+		AA000072 /* video-inicio.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AB000072 /* video-inicio.mp4 */; };
+		AA000059 /* DashboardHomeVideoBackdrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000058 /* DashboardHomeVideoBackdrop.swift */; };
+		AA000073 /* AppLaunchSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000073 /* AppLaunchSplashView.swift */; };
+		AA000064 /* AppShellRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000063 /* AppShellRouter.swift */; };
+		AA000065 /* ClinicHubSheets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000064 /* ClinicHubSheets.swift */; };
+		AA000066 /* PatientRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000065 /* PatientRecord.swift */; };
+		AA000067 /* PatientsRegistryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000066 /* PatientsRegistryViewModel.swift */; };
+		AA000068 /* PatientListingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000067 /* PatientListingRow.swift */; };
+		AA000075 /* login.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = AB000075 /* login.mp4 */; };
+		AA000087 /* StatusBarLightContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000086 /* StatusBarLightContent.swift */; };
+		AA000088 /* JewishPhraseLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000087 /* JewishPhraseLibrary.swift */; };
+		AA000104 /* TefilaCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000099 /* TefilaCopy.swift */; };
+		AA000105 /* SpiritualCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000105 /* SpiritualCategories.swift */; };
+		AA000089 /* JewishInspirationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000088 /* JewishInspirationCard.swift */; };
+		AA000092 /* JewishPhraseLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000087 /* JewishPhraseLibrary.swift */; };
+		AA000091 /* JewishInspirationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000088 /* JewishInspirationCard.swift */; };
+		AA000096 /* TefilaPhraseWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB000089 /* TefilaPhraseWidgets.swift */; };
+		AA000097 /* TefilaPhraseWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AB000098 /* TefilaPhraseWidget.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy); }; };
+		AA000103 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB000022 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AB000000 /* CarDashboardApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarDashboardApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB000001 /* CarDashboardAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDashboardAppApp.swift; sourceTree = "<group>"; };
+		AB000007 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		AB000008 /* TelemetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelemetryService.swift; sourceTree = "<group>"; };
+		AB000009 /* MockTelemetryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTelemetryService.swift; sourceTree = "<group>"; };
+		AB000010 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		AB000011 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		AB000069 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		AB000071 /* MyPrayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPrayersView.swift; sourceTree = "<group>"; };
+		AB000070 /* PatientRecordsBrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRecordsBrowseView.swift; sourceTree = "<group>"; };
+		AB000085 /* SmileLuxAccountStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmileLuxAccountStorage.swift; sourceTree = "<group>"; };
+		AB000080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AB000083 /* PatientAvatarStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAvatarStore.swift; sourceTree = "<group>"; };
+		AB000013 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AB000014 /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
+		AB000018 /* LiquidGlassTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidGlassTabBar.swift; sourceTree = "<group>"; };
+		AB000020 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		AB000022 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AB000023 /* RemoteAssets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAssets.swift; sourceTree = "<group>"; };
+		AB000025 /* DealershipStatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealershipStatsViewModel.swift; sourceTree = "<group>"; };
+		AB000026 /* DealershipStatComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealershipStatComponents.swift; sourceTree = "<group>"; };
+		AB000027 /* PremiumGlass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumGlass.swift; sourceTree = "<group>"; };
+		AB000028 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		AB000030 /* ChatThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatThread.swift; sourceTree = "<group>"; };
+		AB000033 /* ChatInboxStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInboxStore.swift; sourceTree = "<group>"; };
+		AB000031 /* ChatConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatConversationView.swift; sourceTree = "<group>"; };
+		AB000032 /* ChatAvatarViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAvatarViews.swift; sourceTree = "<group>"; };
+		AB000034 /* SupabaseClientProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseClientProvider.swift; sourceTree = "<group>"; };
+		AB000035 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		AB000036 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		AB000037 /* AuthRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRootView.swift; sourceTree = "<group>"; };
+		AB000042 /* LeadCrm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadCrm.swift; sourceTree = "<group>"; };
+		AB000043 /* LeadsCrmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadsCrmService.swift; sourceTree = "<group>"; };
+		AB000044 /* LeadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadsViewModel.swift; sourceTree = "<group>"; };
+		AB000045 /* LeadsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadsListView.swift; sourceTree = "<group>"; };
+		A1B2C3D401234568 /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
+		AB000053 /* RevolutBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevolutBackgroundView.swift; sourceTree = "<group>"; };
+		AB000054 /* DashboardHomeNotificationsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHomeNotificationsSection.swift; sourceTree = "<group>"; };
+		AB000055 /* UserProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileService.swift; sourceTree = "<group>"; };
+		AB000057 /* Fondo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assets.xcassets/Fondo.mp4"; sourceTree = "<group>"; };
+		AB000072 /* video-inicio.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assets.xcassets/video-inicio.mp4"; sourceTree = "<group>"; };
+		AB000058 /* DashboardHomeVideoBackdrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardHomeVideoBackdrop.swift; sourceTree = "<group>"; };
+		AB000073 /* AppLaunchSplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchSplashView.swift; sourceTree = "<group>"; };
+		AB000063 /* AppShellRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppShellRouter.swift; sourceTree = "<group>"; };
+		AB000064 /* ClinicHubSheets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicHubSheets.swift; sourceTree = "<group>"; };
+		AB000065 /* PatientRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientRecord.swift; sourceTree = "<group>"; };
+		AB000066 /* PatientsRegistryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientsRegistryViewModel.swift; sourceTree = "<group>"; };
+		AB000067 /* PatientListingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListingRow.swift; sourceTree = "<group>"; };
+		AB000075 /* login.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Assets.xcassets/login.mp4"; sourceTree = "<group>"; };
+		AB000086 /* StatusBarLightContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarLightContent.swift; sourceTree = "<group>"; };
+		AB000087 /* JewishPhraseLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewishPhraseLibrary.swift; sourceTree = "<group>"; };
+		AB000099 /* TefilaCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TefilaCopy.swift; sourceTree = "<group>"; };
+		AB000105 /* SpiritualCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpiritualCategories.swift; sourceTree = "<group>"; };
+		AB000088 /* JewishInspirationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JewishInspirationCard.swift; sourceTree = "<group>"; };
+		AB000089 /* TefilaPhraseWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TefilaPhraseWidgets.swift; sourceTree = "<group>"; };
+		AB000098 /* TefilaPhraseWidget.appex */ = {isa = PBXFileReference; explicitFileType = wrapper.app-extension; includeInIndex = 0; path = TefilaPhraseWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000034 /* Supabase in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC000052 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AD000001 = {
+			isa = PBXGroup;
+			children = (
+				AD000002 /* CarDashboardApp */,
+				AD000011 /* TefilaPhraseWidget */,
+				AD000009 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AD000002 /* CarDashboardApp */ = {
+			isa = PBXGroup;
+			children = (
+				AB000001 /* CarDashboardAppApp.swift */,
+				AB000080 /* AppDelegate.swift */,
+				AB000063 /* AppShellRouter.swift */,
+				AD000003 /* Models */,
+				AD000004 /* ViewModels */,
+				AD000005 /* Services */,
+				AD000013 /* Inspiration */,
+				AD000006 /* Views */,
+				AD000007 /* Components */,
+				AD000010 /* Design */,
+				AD000008 /* Resources */,
+				AB000022 /* Assets.xcassets */,
+				AB000057 /* Fondo.mp4 */,
+				AB000072 /* video-inicio.mp4 */,
+				AB000075 /* login.mp4 */,
+			);
+			path = CarDashboardApp;
+			sourceTree = "<group>";
+		};
+		AD000003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AB000065 /* PatientRecord.swift */,
+				AB000042 /* LeadCrm.swift */,
+				AB000030 /* ChatThread.swift */,
+				AB000033 /* ChatInboxStore.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AD000004 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				AB000025 /* DealershipStatsViewModel.swift */,
+				AB000066 /* PatientsRegistryViewModel.swift */,
+				AB000007 /* SettingsViewModel.swift */,
+				AB000035 /* AuthViewModel.swift */,
+				AB000044 /* LeadsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		AD000005 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AB000034 /* SupabaseClientProvider.swift */,
+				AB000055 /* UserProfileService.swift */,
+				A1B2C3D401234568 /* ImageCacheService.swift */,
+				AB000043 /* LeadsCrmService.swift */,
+				AB000085 /* SmileLuxAccountStorage.swift */,
+				AB000083 /* PatientAvatarStore.swift */,
+				AB000008 /* TelemetryService.swift */,
+				AB000009 /* MockTelemetryService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AD000006 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB000037 /* AuthRootView.swift */,
+				AB000036 /* LoginView.swift */,
+				AB000010 /* MainTabView.swift */,
+				AB000011 /* DashboardView.swift */,
+				AB000069 /* FavoritesView.swift */,
+				AB000071 /* MyPrayersView.swift */,
+				AB000070 /* PatientRecordsBrowseView.swift */,
+				AB000028 /* ChatView.swift */,
+				AB000031 /* ChatConversationView.swift */,
+				AB000013 /* SettingsView.swift */,
+				AB000045 /* LeadsListView.swift */,
+				AB000064 /* ClinicHubSheets.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AD000007 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AB000014 /* GlassCard.swift */,
+				AB000018 /* LiquidGlassTabBar.swift */,
+				AB000067 /* PatientListingRow.swift */,
+				AB000054 /* DashboardHomeNotificationsSection.swift */,
+				AB000020 /* SectionHeader.swift */,
+				AB000026 /* DealershipStatComponents.swift */,
+				AB000032 /* ChatAvatarViews.swift */,
+				AB000088 /* JewishInspirationCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AD000008 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AB000023 /* RemoteAssets.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AD000009 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB000000 /* CarDashboardApp.app */,
+				AB000098 /* TefilaPhraseWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD000010 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				AB000086 /* StatusBarLightContent.swift */,
+				AB000073 /* AppLaunchSplashView.swift */,
+				AB000058 /* DashboardHomeVideoBackdrop.swift */,
+				AB000027 /* PremiumGlass.swift */,
+				AB000053 /* RevolutBackgroundView.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		AD000011 /* TefilaPhraseWidget */ = {
+			isa = PBXGroup;
+			children = (
+				AB000089 /* TefilaPhraseWidgets.swift */,
+			);
+			path = TefilaPhraseWidget;
+			sourceTree = "<group>";
+		};
+		AD000013 /* Inspiration */ = {
+			isa = PBXGroup;
+			children = (
+				AB000087 /* JewishPhraseLibrary.swift */,
+				AB000099 /* TefilaCopy.swift */,
+				AB000105 /* SpiritualCategories.swift */,
+			);
+			path = Inspiration;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BF000054 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AA000097 /* TefilaPhraseWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		AE000001 /* CarDashboardApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF000003 /* Build configuration list for PBXNativeTarget "CarDashboardApp" */;
+			buildPhases = (
+				AE000002 /* Sources */,
+				AC000001 /* Frameworks */,
+				AE000003 /* Resources */,
+				BF000054 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BH000058 /* PBXTargetDependency */,
+			);
+			name = CarDashboardApp;
+			packageProductDependencies = (
+				AG000002 /* Supabase */,
+			);
+			productName = CarDashboardApp;
+			productReference = AB000000 /* CarDashboardApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BH000050 /* TefilaPhraseWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AF000052 /* Build configuration list for PBXNativeTarget "TefilaPhraseWidget" */;
+			buildPhases = (
+				BH000051 /* Sources */,
+				AC000052 /* Frameworks */,
+				BH000053 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TefilaPhraseWidget;
+			packageProductDependencies = (
+			);
+			productName = TefilaPhraseWidget;
+			productReference = AB000098 /* TefilaPhraseWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AE000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					BH000050 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = AF000001 /* Build configuration list for PBXProject "CarDashboardApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = es;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				es,
+				Base,
+			);
+			mainGroup = AD000001;
+			packageReferences = (
+				AG000001 /* XCRemoteSwiftPackageReference "supabase-swift" */,
+			);
+			productRefGroup = AD000009 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE000001 /* CarDashboardApp */,
+				BH000050 /* TefilaPhraseWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE000003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000022 /* Assets.xcassets in Resources */,
+				AA000058 /* Fondo.mp4 in Resources */,
+				AA000072 /* video-inicio.mp4 in Resources */,
+				AA000075 /* login.mp4 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BH000053 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000103 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE000002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000001 /* CarDashboardAppApp.swift in Sources */,
+				AA000081 /* AppDelegate.swift in Sources */,
+				AA000084 /* PatientAvatarStore.swift in Sources */,
+				AA000007 /* SettingsViewModel.swift in Sources */,
+				AA000008 /* TelemetryService.swift in Sources */,
+				AA000009 /* MockTelemetryService.swift in Sources */,
+				AA000010 /* MainTabView.swift in Sources */,
+				AA000011 /* DashboardView.swift in Sources */,
+				AA000069 /* FavoritesView.swift in Sources */,
+				AA000070 /* MyPrayersView.swift in Sources */,
+				AA000071 /* PatientRecordsBrowseView.swift in Sources */,
+				AA000086 /* SmileLuxAccountStorage.swift in Sources */,
+				AA000013 /* SettingsView.swift in Sources */,
+				AA000014 /* GlassCard.swift in Sources */,
+				AA000018 /* LiquidGlassTabBar.swift in Sources */,
+				AA000020 /* SectionHeader.swift in Sources */,
+				AA000023 /* RemoteAssets.swift in Sources */,
+				AA000025 /* DealershipStatsViewModel.swift in Sources */,
+				AA000026 /* DealershipStatComponents.swift in Sources */,
+				AA000027 /* PremiumGlass.swift in Sources */,
+				AA000028 /* ChatView.swift in Sources */,
+				AA000030 /* ChatThread.swift in Sources */,
+				AA000033 /* ChatInboxStore.swift in Sources */,
+				AA000031 /* ChatConversationView.swift in Sources */,
+				AA000032 /* ChatAvatarViews.swift in Sources */,
+				AA000035 /* SupabaseClientProvider.swift in Sources */,
+				AA000056 /* UserProfileService.swift in Sources */,
+				AA000036 /* AuthViewModel.swift in Sources */,
+				AA000037 /* LoginView.swift in Sources */,
+				AA000038 /* AuthRootView.swift in Sources */,
+				AA000043 /* LeadCrm.swift in Sources */,
+				AA000044 /* LeadsCrmService.swift in Sources */,
+				AA000045 /* LeadsViewModel.swift in Sources */,
+				AA000046 /* LeadsListView.swift in Sources */,
+				A1B2C3D401234567 /* ImageCacheService.swift in Sources */,
+				AA000054 /* RevolutBackgroundView.swift in Sources */,
+				AA000059 /* DashboardHomeVideoBackdrop.swift in Sources */,
+				AA000073 /* AppLaunchSplashView.swift in Sources */,
+				AA000055 /* DashboardHomeNotificationsSection.swift in Sources */,
+				AA000064 /* AppShellRouter.swift in Sources */,
+				AA000065 /* ClinicHubSheets.swift in Sources */,
+				AA000066 /* PatientRecord.swift in Sources */,
+				AA000067 /* PatientsRegistryViewModel.swift in Sources */,
+				AA000068 /* PatientListingRow.swift in Sources */,
+				AA000087 /* StatusBarLightContent.swift in Sources */,
+				AA000088 /* JewishPhraseLibrary.swift in Sources */,
+				AA000104 /* TefilaCopy.swift in Sources */,
+				AA000105 /* SpiritualCategories.swift in Sources */,
+				AA000089 /* JewishInspirationCard.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BH000051 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000096 /* TefilaPhraseWidgets.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BH000058 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BH000050 /* TefilaPhraseWidget */;
+			targetProxy = BH000059 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXContainerItemProxy section */
+		BH000059 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BH000050;
+			remoteInfo = TefilaPhraseWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin XCBuildConfiguration section */
+		AF000001D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AF000001R /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AF000002D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tefila";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Tefila accede a la galería cuando adjuntas una imagen en el chat.";
+				INFOPLIST_KEY_UIStatusBarStyle = LightContent;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cardashboard.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AF000002R /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_CFBundleDisplayName = "Tefila";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Tefila accede a la galería cuando adjuntas una imagen en el chat.";
+				INFOPLIST_KEY_UIStatusBarStyle = LightContent;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cardashboard.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		AF000060D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TefilaPhraseWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cardashboard.app.TefilaPhraseWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) TEWIDGET";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AF000060R /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = TefilaPhraseWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cardashboard.app.TefilaPhraseWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) TEWIDGET";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AF000001 /* Build configuration list for PBXProject "CarDashboardApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF000001D /* Debug */,
+				AF000001R /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF000003 /* Build configuration list for PBXNativeTarget "CarDashboardApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF000002D /* Debug */,
+				AF000002R /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AF000052 /* Build configuration list for PBXNativeTarget "TefilaPhraseWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AF000060D /* Debug */,
+				AF000060R /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AG000001 /* XCRemoteSwiftPackageReference "supabase-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/supabase/supabase-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.18.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AG000002 /* Supabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AG000001 /* XCRemoteSwiftPackageReference "supabase-swift" */;
+			productName = Supabase;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = AE000000 /* Project object */;
+}

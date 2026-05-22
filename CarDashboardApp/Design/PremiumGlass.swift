@@ -1,0 +1,351 @@
+import SwiftUI
+
+/// Acentos suaves (coral, menta, hielo, ámbar) — solo iconos y highlights.
+enum PremiumAccent {
+    static let coral = Color(red: 0.96, green: 0.42, blue: 0.38)
+    static let mint = Color(red: 0.42, green: 0.82, blue: 0.68)
+    static let ice = Color(red: 0.52, green: 0.72, blue: 0.92)
+    static let amber = Color(red: 0.96, green: 0.76, blue: 0.42)
+    static let ink = Color(red: 0.18, green: 0.22, blue: 0.28)
+    /// Dorado para ítem activo en pestañas y acentos de selección típicos de la shell.
+    static let tabActive = Color(red: 0.82, green: 0.63, blue: 0.26)
+}
+
+/// Pastilla tipo glass para badges y chips (mini cápsula translúcida).
+struct GlassCapsuleBadge: View {
+    let text: String
+    var isPositive: Bool = false
+
+    var body: some View {
+        Text(text)
+            .font(.system(size: 10, weight: .semibold))
+            .foregroundStyle(isPositive ? PremiumAccent.mint : Color.black.opacity(0.5))
+            .padding(.horizontal, 9)
+            .padding(.vertical, 5)
+            .background {
+                TranslucentWhitePillChrome()
+            }
+    }
+}
+
+/// Fondo Apple-style: material + velo blanco + borde luminoso superior (muy sutil).
+struct LiquidGlassCardBackground: View {
+    var cornerRadius: CGFloat
+
+    var body: some View {
+        RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+            .fill(.ultraThinMaterial)
+            .background {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                Color.white.opacity(0.72),
+                                Color.white.opacity(0.22),
+                                Color.white.opacity(0.06)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .strokeBorder(
+                        LinearGradient(
+                            colors: [
+                                Color.white.opacity(0.95),
+                                Color.white.opacity(0.35),
+                                Color.gray.opacity(0.12)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 0.75
+                    )
+            }
+            .shadow(color: .black.opacity(0.05), radius: 16, x: 0, y: 8)
+            .shadow(color: .black.opacity(0.02), radius: 2, x: 0, y: 1)
+    }
+}
+
+// MARK: - Cristal blanco translúcido (material + velo + borde)
+
+enum TranslucentWhiteGlass {
+    static let fillGradient = LinearGradient(
+        colors: [
+            Color.white.opacity(0.52),
+            Color.white.opacity(0.22),
+            Color.white.opacity(0.07),
+        ],
+        startPoint: .topLeading,
+        endPoint: .bottomTrailing
+    )
+
+    static let strokeGradient = LinearGradient(
+        colors: [
+            Color.white.opacity(0.92),
+            Color.white.opacity(0.42),
+            Color.black.opacity(0.05),
+        ],
+        startPoint: .topLeading,
+        endPoint: .bottomTrailing
+    )
+}
+
+/// Pastilla: blanco **transparente** con desenfoque (glassmorphism).
+struct TranslucentWhitePillChrome: View {
+    var body: some View {
+        Capsule(style: .continuous)
+            .fill(.ultraThinMaterial)
+            .environment(\.colorScheme, .light)
+            .background {
+                Capsule(style: .continuous)
+                    .fill(TranslucentWhiteGlass.fillGradient)
+            }
+            .overlay {
+                Capsule(style: .continuous)
+                    .strokeBorder(TranslucentWhiteGlass.strokeGradient, lineWidth: 0.65)
+            }
+    }
+}
+
+/// Rectángulo redondeado con el mismo cristal blanco.
+struct TranslucentWhiteRoundedChrome: View {
+    var cornerRadius: CGFloat
+
+    var body: some View {
+        RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+            .fill(.ultraThinMaterial)
+            .environment(\.colorScheme, .light)
+            .background {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .fill(TranslucentWhiteGlass.fillGradient)
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .strokeBorder(TranslucentWhiteGlass.strokeGradient, lineWidth: 0.65)
+            }
+            .shadow(color: .black.opacity(0.08), radius: 16, x: 0, y: 6)
+            .shadow(color: .black.opacity(0.04), radius: 4, x: 0, y: 2)
+    }
+}
+
+/// Círculo (botones de cabecera / acciones).
+struct TranslucentWhiteCircleChrome: View {
+    var size: CGFloat = 44
+
+    var body: some View {
+        Circle()
+            .fill(.ultraThinMaterial)
+            .environment(\.colorScheme, .light)
+            .frame(width: size, height: size)
+            .background {
+                Circle()
+                    .fill(TranslucentWhiteGlass.fillGradient)
+                    .frame(width: size, height: size)
+            }
+            .overlay {
+                Circle()
+                    .strokeBorder(TranslucentWhiteGlass.strokeGradient, lineWidth: 0.65)
+                    .frame(width: size, height: size)
+            }
+    }
+}
+
+// MARK: - Contenedores elevados (alias → cristal translúcido)
+
+/// Tarjeta / panel: cristal blanco translúcido.
+struct WhiteElevatedCardBackground: View {
+    var cornerRadius: CGFloat
+
+    var body: some View {
+        TranslucentWhiteRoundedChrome(cornerRadius: cornerRadius)
+    }
+}
+
+/// Píldora de búsqueda (cabeceras).
+struct DashboardChromeSearchCapsuleBackground: View {
+    var body: some View {
+        TranslucentWhitePillChrome()
+    }
+}
+
+/// Misma apariencia que las tarjetas elevadas (alias histórico `DashboardChromeCard…`).
+struct DashboardChromeCardBackground: View {
+    var cornerRadius: CGFloat
+
+    var body: some View {
+        WhiteElevatedCardBackground(cornerRadius: cornerRadius)
+    }
+}
+
+/// Contenedor de ajustes: mismo lenguaje visual que el buscador de cabecera.
+struct ChromeSettingsCard<Content: View>: View {
+    var cornerRadius: CGFloat
+    var padding: CGFloat
+    @ViewBuilder var content: () -> Content
+
+    init(
+        cornerRadius: CGFloat = 22,
+        padding: CGFloat = 16,
+        @ViewBuilder content: @escaping () -> Content
+    ) {
+        self.cornerRadius = cornerRadius
+        self.padding = padding
+        self.content = content
+    }
+
+    var body: some View {
+        content()
+            .padding(padding)
+            .background {
+                DashboardChromeCardBackground(cornerRadius: cornerRadius)
+            }
+    }
+}
+
+/// Botón circular de cabecera (estadísticas, notificaciones, ordenar, filtros…).
+struct DashboardChromeHeaderCircleBackground: View {
+    var size: CGFloat = 44
+
+    var body: some View {
+        TranslucentWhiteCircleChrome(size: size)
+    }
+}
+
+/// Colores del campo de búsqueda de Inicio (reutilizable en Chat y modales).
+enum DashboardChromeSearchFieldStyle {
+    /// Texto / iconos oscuros sobre pastilla blanca.
+    static let iconOpacity: Double = 0.5
+    static let promptOpacity: Double = 0.42
+    static let iconClearOpacity: Double = 0.45
+}
+
+/// Misma posición y anchura del buscador que en Inicio (avatar + pastilla flexible + 2 círculos).
+enum AppChromeHeaderMetrics {
+    /// Columna lateral alineada con tarjetas y cuadrícula en Inicio.
+    static let horizontalPadding: CGFloat = 22
+    static let topPadding: CGFloat = 8
+    static let bottomPadding: CGFloat = 12
+    static let hStackSpacing: CGFloat = 10
+    static let avatarSize: CGFloat = 48
+    static let circleButtonSize: CGFloat = 44
+}
+
+extension View {
+    /// Padding exterior de la fila cabecera (Inicio, Chat y modales).
+    func appChromeHeaderOuterPadding() -> some View {
+        padding(.horizontal, AppChromeHeaderMetrics.horizontalPadding)
+            .padding(.top, AppChromeHeaderMetrics.topPadding)
+            .padding(.bottom, AppChromeHeaderMetrics.bottomPadding)
+    }
+}
+
+// MARK: - Cabecera con píldora de búsqueda + botones circulares
+
+/// Campo de búsqueda tipo pastilla (mismo cristal blanco translúcido).
+struct LiquidGlassSearchPillBackground: View {
+    var body: some View {
+        TranslucentWhitePillChrome()
+    }
+}
+
+private let keyboardAccessoryShape = UnevenRoundedRectangle(
+    cornerRadii: RectangleCornerRadii(
+        topLeading: 14,
+        bottomLeading: 0,
+        bottomTrailing: 0,
+        topTrailing: 14
+    ),
+    style: .continuous
+)
+
+/// Franja encima del teclado (accesorio del sistema): mismo lenguaje visual que la pastilla de búsqueda, sin borde inferior.
+struct LiquidGlassKeyboardAccessoryBar: View {
+    var onDismiss: () -> Void
+
+    var body: some View {
+        ZStack(alignment: .trailing) {
+            keyboardAccessoryShape
+                .fill(.ultraThinMaterial)
+                .environment(\.colorScheme, .light)
+                .background {
+                    keyboardAccessoryShape
+                        .fill(TranslucentWhiteGlass.fillGradient)
+                }
+                .overlay {
+                    keyboardAccessoryShape
+                        .strokeBorder(
+                            LinearGradient(
+                                colors: [
+                                    Color.white.opacity(0.88),
+                                    Color.white.opacity(0.38),
+                                    Color.white.opacity(0.06),
+                                ],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            ),
+                            lineWidth: 0.65
+                        )
+                }
+                .shadow(color: .black.opacity(0.04), radius: 8, x: 0, y: 4)
+
+            Button {
+                onDismiss()
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.system(size: 15, weight: .semibold))
+                    .foregroundStyle(Color.black.opacity(0.55))
+                    .frame(width: 44, height: 44)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .padding(.trailing, 4)
+            .accessibilityLabel("Cerrar teclado")
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: 48)
+    }
+}
+
+/// Botón circular ordenar / filtros / destacados.
+struct LiquidGlassCircleButtonBackground: View {
+    var body: some View {
+        Circle()
+            .fill(.ultraThinMaterial)
+            .environment(\.colorScheme, .light)
+            .background {
+                Circle()
+                    .fill(TranslucentWhiteGlass.fillGradient)
+            }
+            .overlay {
+                Circle()
+                    .strokeBorder(TranslucentWhiteGlass.strokeGradient, lineWidth: 0.75)
+            }
+            .shadow(color: .black.opacity(0.06), radius: 12, x: 0, y: 5)
+            .shadow(color: .black.opacity(0.03), radius: 1, x: 0, y: 1)
+    }
+}
+
+/// Badge glass sobre fotos oscuras (mini cápsula legible).
+struct GlassPhotoBadge: View {
+    let text: String
+
+    var body: some View {
+        Text(text)
+            .font(.system(size: 10, weight: .bold))
+            .foregroundStyle(Color.black.opacity(0.82))
+            .padding(.horizontal, 9)
+            .padding(.vertical, 5)
+            .background {
+                Capsule(style: .continuous)
+                    .fill(.ultraThinMaterial)
+                    .environment(\.colorScheme, .light)
+                    .overlay {
+                        Capsule(style: .continuous)
+                            .strokeBorder(Color.white.opacity(0.85), lineWidth: 0.5)
+                    }
+            }
+    }
+}
