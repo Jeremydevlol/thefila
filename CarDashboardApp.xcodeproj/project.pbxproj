@@ -153,6 +153,8 @@
 		AB000117 /* SavedPrayersStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPrayersStore.swift; sourceTree = "<group>"; };
 		AB000118 /* ElevenLabsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevenLabsConfig.swift; sourceTree = "<group>"; };
 		AB000119 /* ElevenLabsSpeechClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElevenLabsSpeechClient.swift; sourceTree = "<group>"; };
+		TF000020 /* CarDashboardApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CarDashboardApp.entitlements; sourceTree = "<group>"; };
+		TF000021 /* TefilaPhraseWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TefilaPhraseWidget.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 				AB000057 /* Fondo.mp4 */,
 				AB000072 /* video-inicio.mp4 */,
 				AB000075 /* login.mp4 */,
+				TF000020 /* CarDashboardApp.entitlements */,
 			);
 			path = CarDashboardApp;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				AB000089 /* TefilaPhraseWidgets.swift */,
+				TF000021 /* TefilaPhraseWidget.entitlements */,
 			);
 			path = TefilaPhraseWidget;
 			sourceTree = "<group>";
@@ -682,6 +686,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "CarDashboardApp/CarDashboardApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				CODE_SIGN_IDENTITY = "";
@@ -716,6 +721,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "CarDashboardApp/CarDashboardApp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				CODE_SIGN_IDENTITY = "";
@@ -750,6 +756,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_ENTITLEMENTS = "TefilaPhraseWidget/TefilaPhraseWidget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				CODE_SIGN_IDENTITY = "";
@@ -780,6 +787,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_ENTITLEMENTS = "TefilaPhraseWidget/TefilaPhraseWidget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				CODE_SIGN_IDENTITY = "";
