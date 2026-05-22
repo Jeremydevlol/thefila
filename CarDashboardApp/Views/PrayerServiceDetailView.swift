@@ -9,6 +9,8 @@ struct PrayerServiceDetailView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var selectedTier: PrayerTier = .standard
     @State private var goToIntention: Bool = false
+    @State private var showPreviewSheet: Bool = false
+    @State private var isFavorite: Bool = false
 
     private let goldAccent = Color(red: 236/255, green: 196/255, blue: 95/255)
     private let goldMid    = Color(red: 219/255, green: 175/255, blue: 75/255)
@@ -33,6 +35,7 @@ struct PrayerServiceDetailView: View {
                     requestButton
                 }
                 .padding(.horizontal, 18)
+                .padding(.top, 14)
                 .padding(.bottom, 40)
             }
         }
@@ -50,10 +53,14 @@ struct PrayerServiceDetailView: View {
                 }
             }
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {} label: {
-                    Image(systemName: "heart")
+                Button {
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                        isFavorite.toggle()
+                    }
+                } label: {
+                    Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .font(.system(size: 18))
-                        .foregroundStyle(navyInk.opacity(0.5))
+                        .foregroundStyle(isFavorite ? Color.red.opacity(0.8) : navyInk.opacity(0.5))
                         .frame(width: 36, height: 36)
                         .background(Circle().fill(.white.opacity(0.75)))
                 }
@@ -65,6 +72,91 @@ struct PrayerServiceDetailView: View {
         .navigationDestination(isPresented: $goToIntention) {
             ChoosePrayerIntentionView()
         }
+        .sheet(isPresented: $showPreviewSheet) {
+            previewSheet
+        }
+    }
+
+    private var previewSheet: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 18) {
+                    HStack(spacing: 14) {
+                        ZStack {
+                            Circle()
+                                .fill(LinearGradient(colors: [goldAccent, goldDeep], startPoint: .topLeading, endPoint: .bottomTrailing))
+                                .frame(width: 54, height: 54)
+                            Image(systemName: service.iconSystemName)
+                                .font(.system(size: 22, weight: .bold))
+                                .foregroundStyle(.white)
+                        }
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(service.eyebrow.uppercased())
+                                .font(.system(size: 10, weight: .bold))
+                                .tracking(0.8)
+                                .foregroundStyle(goldMid)
+                            Text(service.title)
+                                .font(.system(size: 18, weight: .bold, design: .serif))
+                                .foregroundStyle(navyInk)
+                        }
+                    }
+
+                    Divider()
+
+                    Text(service.longDescription)
+                        .font(.system(size: 15, weight: .medium))
+                        .foregroundStyle(navyInk.opacity(0.85))
+                        .lineSpacing(4)
+                        .fixedSize(horizontal: false, vertical: true)
+
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(service.spiritualNote)
+                            .font(.system(size: 14, weight: .medium, design: .serif))
+                            .foregroundStyle(navyInk.opacity(0.7))
+                            .italic()
+                            .fixedSize(horizontal: false, vertical: true)
+                        Text(service.rabbiSource)
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundStyle(goldMid)
+                    }
+                    .padding(14)
+                    .background {
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .fill(goldAccent.opacity(0.07))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                                    .strokeBorder(goldAccent.opacity(0.3), lineWidth: 1)
+                            }
+                    }
+
+                    Button {
+                        showPreviewSheet = false
+                        goToIntention = true
+                    } label: {
+                        Text("Solicitar esta tefilá")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundStyle(navyInk)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 14)
+                            .background {
+                                Capsule()
+                                    .fill(LinearGradient(colors: [goldAccent, goldMid], startPoint: .leading, endPoint: .trailing))
+                            }
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.top, 8)
+                }
+                .padding(20)
+            }
+            .navigationTitle("Preview")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cerrar") { showPreviewSheet = false }
+                }
+            }
+        }
+        .presentationDetents([.medium, .large])
     }
 
     // MARK: - Header card
@@ -118,7 +210,9 @@ struct PrayerServiceDetailView: View {
             // Preview + duración
             HStack(spacing: 14) {
                 // Preview button
-                Button {} label: {
+                Button {
+                    showPreviewSheet = true
+                } label: {
                     HStack(spacing: 6) {
                         Image(systemName: "eye.fill")
                             .font(.system(size: 13))

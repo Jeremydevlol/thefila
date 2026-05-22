@@ -199,7 +199,6 @@ struct PrayerAudioView: View {
                     }
                 }
                 .buttonStyle(.plain)
-                .disabled(speech.isGeneratingCloudVoice)
                 .padding(.horizontal, 14)
 
                 controlButton(icon: "forward.end.fill") {
@@ -222,9 +221,9 @@ struct PrayerAudioView: View {
                         "מייצרים דיבור מהענן…"
                       )
                     : TefilaCopy.choose(
-                        "ElevenLabs (voz en la nube) si hay clave API; si no, voz del sistema.",
-                        "ElevenLabs cloud voice when API key present; otherwise system voice.",
-                        "ElevenLabs אם קיימת מפתח; אחרת קול המערכת."
+                        "VIERA IA (voz en la nube) si hay clave API; si no, voz del sistema.",
+                        "VIERA IA cloud voice when API key present; otherwise system voice.",
+                        "VIERA IA אם קיימת מפתח; אחרת קול המערכת."
                       )
             )
             .font(.system(size: 10.5, weight: .medium))

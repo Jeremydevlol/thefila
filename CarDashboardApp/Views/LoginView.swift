@@ -88,13 +88,14 @@ struct LoginView: View {
                 Text("Iniciar sesión")
                     .font(.system(size: 17, weight: .semibold))
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
+                    .frame(height: 54)
                     .foregroundStyle(.white)
                     .background(
                         RoundedRectangle(cornerRadius: 14, style: .continuous)
                             .fill(welcomePrimaryBlue)
                     )
                     .shadow(color: welcomePrimaryBlue.opacity(0.35), radius: 12, x: 0, y: 5)
+                    .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
 
@@ -105,8 +106,25 @@ struct LoginView: View {
                 Text("Crear cuenta")
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(welcomePrimaryBlue)
-                    .padding(.vertical, 6)
                     .frame(maxWidth: .infinity)
+                    .frame(height: 54)
+                    .background(
+                        RoundedRectangle(cornerRadius: 14, style: .continuous)
+                            .stroke(welcomePrimaryBlue.opacity(0.5), lineWidth: 1.5)
+                    )
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+
+            Button {
+                auth.signInAsGuest()
+            } label: {
+                Text("Continuar como invitado")
+                    .font(.system(size: 15, weight: .medium))
+                    .foregroundStyle(Color.black.opacity(0.45))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 44)
+                    .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
         }

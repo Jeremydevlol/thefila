@@ -15,6 +15,8 @@ final class AuthViewModel: ObservableObject {
     /// Persistido: si es `true` y no hay sesión, la app muestra pantalla de acceso (`LoginView`).
     @Published private(set) var expectsLoginAfterSignOut: Bool
     @Published var lastErrorMessage: String?
+    /// Modo invitado: acceso local sin cuenta Supabase.
+    @Published private(set) var isGuest: Bool = false
     /// Foto de perfil del usuario con sesión iniciada (`profiles.avatar_url` o metadatos OAuth).
     @Published private(set) var profileAvatarImage: UIImage?
 
@@ -37,7 +39,7 @@ final class AuthViewModel: ObservableObject {
     }
 
     var isAuthenticated: Bool {
-        session != nil
+        session != nil || isGuest
     }
 
     private func persistExpectsLoginAfterSignOut(_ value: Bool) {
@@ -144,6 +146,11 @@ final class AuthViewModel: ObservableObject {
         }
     }
 
+    func signInAsGuest() {
+        isGuest = true
+        lastErrorMessage = nil
+    }
+
     func signIn(email: String, password: String) async {
         lastErrorMessage = nil
         let trimmed = email.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -195,6 +202,7 @@ final class AuthViewModel: ObservableObject {
             lastErrorMessage = error.localizedDescription
         }
         session = nil
+        isGuest = false
         SmileLuxAccountStorage.syncFromSession(nil)
         persistExpectsLoginAfterSignOut(true)
     }
