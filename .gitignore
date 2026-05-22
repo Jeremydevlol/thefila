@@ -1,7 +1,3 @@
-# API keys locales (copia desde ElevenLabsSecrets.plist.example)
-CarDashboardApp/**/ElevenLabsSecrets.plist
-**/ElevenLabsSecrets.plist
-
 # Herramientas locales
 .claude/
 
