@@ -517,7 +517,7 @@ private struct TanakhAdaptiveWidgetBackground: View {
 private struct TefilaTanakhWidget: Widget {
     var body: some WidgetConfiguration {
         StaticConfiguration(
-            kind: "com.tefila.tanakh.verse",
+            kind: "com.tefilas.tanakh.verse",
             provider: TanakhVerseTimelineProvider()
         ) { entry in
             TefilaTanakhWidgetContent(entry: entry)
