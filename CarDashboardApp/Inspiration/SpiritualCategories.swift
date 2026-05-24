@@ -1,16 +1,5 @@
 import Foundation
 
-/// Selección liviana español · inglés · hebreo según el idioma del sistema.
-enum LocaleTriple {
-    static func pick(_ es: String, _ en: String, _ he: String) -> String {
-        switch (Locale.current.language.languageCode?.identifier ?? "es").prefix(2) {
-        case "he": return he
-        case "en": return en
-        default: return es
-        }
-    }
-}
-
 // MARK: - Intenciones en Inicio (rejilla 2 columnas × 6 tarjetas)
 
 enum SpiritualCategoryID: String, CaseIterable, Identifiable {

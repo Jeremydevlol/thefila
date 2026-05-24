@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 // MARK: - PrayerAudioView (reproductor con síntesis de voz)
 
@@ -17,8 +18,9 @@ struct PrayerAudioView: View {
     private let goldAccent = Color(red: 236/255, green: 196/255, blue: 95/255)
     private let goldMid    = Color(red: 219/255, green: 175/255, blue: 75/255)
     private let goldDeep   = Color(red: 172/255, green: 128/255, blue: 44/255)
-    private let navyInk    = Color(red: 42/255, green: 58/255, blue: 98/255)
-    private let purple     = Color(red: 0.48, green: 0.35, blue: 0.74)
+    private let navyInk = Color(red: 42/255, green: 58/255, blue: 98/255)
+    /// Lavanda editorial (Pasajes/checkout); nombre explícito evita errores si `purple` no resuelve en el SDK.
+    private let tefilaPurpleAccent = Color(red: 0.48, green: 0.35, blue: 0.74)
 
     private var elapsedSeconds: Double {
         speech.estimatedDurationSeconds * speech.progress
@@ -30,13 +32,7 @@ struct PrayerAudioView: View {
 
     var body: some View {
         ZStack {
-            Image("TefilaHomeBackground")
-                .resizable().scaledToFill()
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                .clipped()
-                .ignoresSafeArea()
-                .accessibilityIgnoresInvertColors(true)
-            Color.white.opacity(0.18).ignoresSafeArea().allowsHitTesting(false)
+            TefilaSpiritualFondoBackdrop(lightVeilOpacity: 0.18)
 
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 18) {
@@ -64,6 +60,7 @@ struct PrayerAudioView: View {
                     .foregroundStyle(goldAccent)
                 }
             }
+            .sharedBackgroundVisibility(.hidden)
             ToolbarItem(placement: .navigationBarTrailing) {
                 Menu {
                     Button("Compartir tefilá", systemImage: "square.and.arrow.up") { }
@@ -76,6 +73,7 @@ struct PrayerAudioView: View {
                         .foregroundStyle(navyInk.opacity(0.6))
                 }
             }
+            .sharedBackgroundVisibility(.hidden)
         }
         .toolbarBackground(.hidden, for: .navigationBar)
         .environment(\.colorScheme, .light)
@@ -119,17 +117,7 @@ struct PrayerAudioView: View {
     private var playerCard: some View {
         VStack(spacing: 0) {
             HStack(alignment: .center, spacing: 14) {
-                ZStack {
-                    PassageRibbonShape()
-                        .fill(LinearGradient(colors: [purple, purple.opacity(0.75)], startPoint: .top, endPoint: .bottom))
-                        .overlay { PassageRibbonShape().stroke(Color.white.opacity(0.35), lineWidth: 0.75) }
-                        .shadow(color: purple.opacity(0.45), radius: 4, x: 0, y: 2)
-                    Image(systemName: "star.of.david.fill")
-                        .font(.system(size: 14, weight: .bold))
-                        .foregroundStyle(LinearGradient(colors: [goldAccent, goldDeep], startPoint: .top, endPoint: .bottomTrailing))
-                        .offset(y: -6)
-                }
-                .frame(width: 32, height: 66)
+                TefilaBanderaMark(width: 36, height: 72)
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(intention.title)
@@ -243,159 +231,159 @@ struct PrayerAudioView: View {
         }
     }
 
-    // MARK: - Inspiration quote
+    // MARK: - Inspiration quote — fondo de contenedor `Salmo`
 
     private var inspirationCard: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack(spacing: 6) {
-                Text("❝")
-                    .font(.system(size: 22, weight: .heavy))
-                    .foregroundStyle(goldMid)
-                Text("Frase que te inspira")
-                    .font(.system(size: 13.5, weight: .bold))
-                    .foregroundStyle(goldMid)
-            }
+        ZStack(alignment: .topLeading) {
+            prayerAudioCardBackdropLayer(
+                assetName: "Salmo",
+                fallbackColor: Color(red: 1, green: 0.97, blue: 0.88),
+                washColor: Color(red: 1, green: 0.97, blue: 0.88),
+                washOpacity: 0.74
+            )
 
-            Text(inspirationQuote)
-                .font(.system(size: 17, weight: .medium, design: .serif))
-                .foregroundStyle(navyInk)
-                .fixedSize(horizontal: false, vertical: true)
-                .lineSpacing(3)
+            HStack(alignment: .top, spacing: 14) {
+                VStack(alignment: .leading, spacing: 10) {
+                    HStack(spacing: 6) {
+                        Text("❝")
+                            .font(.system(size: 22, weight: .heavy))
+                            .foregroundStyle(goldMid)
+                            .shadow(color: .black.opacity(0.12), radius: 0, x: 0, y: 0.8)
+                        Text("Frase que te inspira")
+                            .font(.system(size: 13.5, weight: .bold))
+                            .foregroundStyle(goldMid)
+                    }
 
-            Text(inspirationReference)
-                .font(.system(size: 13, weight: .semibold))
-                .foregroundStyle(goldMid)
-        }
-        .padding(18)
-        .background {
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(Color(red: 1, green: 0.97, blue: 0.88).opacity(0.95))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .strokeBorder(goldAccent.opacity(0.3), lineWidth: 1)
+                    Text(inspirationQuote)
+                        .font(.system(size: 17, weight: .medium, design: .serif))
+                        .foregroundStyle(navyInk)
+                        .shadow(color: .white.opacity(0.35), radius: 0.5, x: 0, y: 0)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineSpacing(3)
+
+                    Text(inspirationReference)
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundStyle(goldMid)
                 }
-                .shadow(color: goldDeep.opacity(0.12), radius: 8, x: 0, y: 4)
+                Spacer(minLength: 0)
+            }
+            .padding(18)
         }
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .strokeBorder(goldAccent.opacity(0.32), lineWidth: 1)
+        }
+        .shadow(color: goldDeep.opacity(0.14), radius: 8, x: 0, y: 4)
     }
 
-    private var spiritualIntelligenceCard: some View {
-        HStack(alignment: .top, spacing: 14) {
-            VStack(alignment: .leading, spacing: 8) {
-                HStack(spacing: 6) {
-                    Image(systemName: "sparkles")
-                        .font(.system(size: 13))
-                        .foregroundStyle(purple)
-                    Text("Inteligencia espiritual")
-                        .font(.system(size: 13.5, weight: .bold))
-                        .foregroundStyle(purple)
-                }
-                Text(spiritualReflection)
-                    .font(.system(size: 13.5, weight: .medium))
-                    .foregroundStyle(navyInk.opacity(0.75))
-                    .fixedSize(horizontal: false, vertical: true)
-                    .lineSpacing(3)
-            }
+    // MARK: - Inteligencia espiritual — fondo de contenedor `Tefila`
 
-            Image(systemName: "brain.fill")
-                .font(.system(size: 42))
-                .symbolRenderingMode(.hierarchical)
-                .foregroundStyle(purple.opacity(0.65))
-        }
-        .padding(18)
-        .background {
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(purple.opacity(0.07))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .strokeBorder(purple.opacity(0.18), lineWidth: 1)
+    private var spiritualIntelligenceCard: some View {
+        ZStack(alignment: .topLeading) {
+            prayerAudioCardBackdropLayer(
+                assetName: "Tefila",
+                fallbackColor: tefilaPurpleAccent.opacity(0.08),
+                washColor: .white,
+                washOpacity: 0.62,
+                secondaryWash: Color(red: 0.52, green: 0.40, blue: 0.78),
+                secondaryWashOpacity: 0.12
+            )
+
+            HStack(alignment: .top, spacing: 14) {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 6) {
+                        Image(systemName: "sparkles")
+                            .font(.system(size: 13))
+                            .foregroundStyle(tefilaPurpleAccent)
+                            .shadow(color: .white.opacity(0.55), radius: 0, x: 0, y: 0.5)
+                        Text("Inteligencia espiritual")
+                            .font(.system(size: 13.5, weight: .bold))
+                            .foregroundStyle(tefilaPurpleAccent)
+                    }
+                    Text(spiritualReflection)
+                        .font(.system(size: 13.5, weight: .medium))
+                        .foregroundStyle(navyInk.opacity(0.82))
+                        .shadow(color: .white.opacity(0.42), radius: 0.5, x: 0, y: 0)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineSpacing(3)
                 }
+                Spacer(minLength: 0)
+            }
+            .padding(18)
         }
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+        .overlay {
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .strokeBorder(tefilaPurpleAccent.opacity(0.22), lineWidth: 1)
+        }
+        .shadow(color: tefilaPurpleAccent.opacity(0.12), radius: 8, x: 0, y: 3)
     }
 
     private var infoRow: some View {
-        HStack(spacing: 12) {
-            HStack(alignment: .bottom, spacing: 0) {
-                VStack(alignment: .leading, spacing: 6) {
-                    HStack(spacing: 5) {
-                        Image(systemName: "location.fill")
-                            .font(.system(size: 12))
-                            .foregroundStyle(purple)
-                        Text("Ubicación")
-                            .font(.system(size: 12, weight: .bold))
-                            .foregroundStyle(purple)
-                    }
-                    Text(location.displayName.components(separatedBy: "·").first?.trimmingCharacters(in: .whitespaces) ?? location.displayName)
-                        .font(.system(size: 14, weight: .semibold))
-                        .foregroundStyle(navyInk)
-                        .lineLimit(2)
+        let headline = prayerAudioLocationHeadline
+        let subtitleText = prayerAudioLocationSubtitle
+
+        return HStack(alignment: .center, spacing: 14) {
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(spacing: 5) {
+                    Image(systemName: "location.fill")
+                        .font(.system(size: 13))
+                        .foregroundStyle(tefilaPurpleAccent)
+                    Text("Ubicación")
+                        .font(.system(size: 12.5, weight: .bold))
+                        .foregroundStyle(tefilaPurpleAccent)
                 }
-                Spacer()
-                Image(systemName: "building.columns.fill")
-                    .font(.system(size: 28))
-                    .symbolRenderingMode(.hierarchical)
-                    .foregroundStyle(purple.opacity(0.3))
-            }
-            .padding(14)
-            .frame(maxWidth: .infinity)
-            .background {
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(.white.opacity(0.88))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 18, style: .continuous)
-                            .strokeBorder(Color.white.opacity(0.7), lineWidth: 1)
-                    }
-                    .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 4)
+                Text(headline)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(navyInk)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.leading)
+
+                if let detail = subtitleText, !detail.isEmpty {
+                    Text(detail)
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundStyle(navyInk.opacity(0.55))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .multilineTextAlignment(.leading)
+                }
             }
 
-            VStack(alignment: .leading, spacing: 6) {
-                HStack(spacing: 5) {
-                    Image(systemName: "clock.fill")
-                        .font(.system(size: 12))
-                        .foregroundStyle(goldMid)
-                    Text("Tiempo de escucha")
-                        .font(.system(size: 12, weight: .bold))
-                        .foregroundStyle(goldMid)
-                }
-                Text(formatTime(elapsedSeconds))
-                    .font(.system(size: 22, weight: .bold, design: .monospaced))
-                    .foregroundStyle(navyInk)
-                Text(TefilaCopy.choose("de \(formatTime(speech.estimatedDurationSeconds))", "of \(formatTime(speech.estimatedDurationSeconds))", "מתוך \(formatTime(speech.estimatedDurationSeconds))"))
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundStyle(navyInk.opacity(0.5))
-                HStack(spacing: 3) {
-                    ForEach(0..<5) { i in
-                        Capsule()
-                            .fill(Double(i) / 4.0 <= speech.progress ? goldMid : navyInk.opacity(0.15))
-                            .frame(width: 5, height: CGFloat(8 + i * 4))
-                    }
-                }
-            }
-            .padding(14)
-            .frame(maxWidth: .infinity)
-            .background {
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(.white.opacity(0.88))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 18, style: .continuous)
-                            .strokeBorder(Color.white.opacity(0.7), lineWidth: 1)
-                    }
-                    .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 4)
-            }
+            Image(systemName: "building.columns.fill")
+                .font(.system(size: 36))
+                .symbolRenderingMode(.hierarchical)
+                .foregroundStyle(tefilaPurpleAccent.opacity(0.28))
+                .padding(.leading, 4)
         }
+        .padding(.vertical, 16)
+        .padding(.horizontal, 18)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background {
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(.white.opacity(0.88))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .strokeBorder(Color.white.opacity(0.7), lineWidth: 1)
+                }
+                .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 4)
+        }
+    }
+
+    private var prayerAudioLocationHeadline: String {
+        let segs = location.displayName.components(separatedBy: "·").map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
+        return segs.first ?? location.displayName.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private var prayerAudioLocationSubtitle: String? {
+        let segs = location.displayName.components(separatedBy: "·").map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
+        guard segs.count > 1 else { return nil }
+        return segs.dropFirst().joined(separator: " · ")
     }
 
     private var prayerTextCard: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 8) {
-                ZStack {
-                    PassageRibbonShape()
-                        .fill(LinearGradient(colors: [purple, purple.opacity(0.75)], startPoint: .top, endPoint: .bottom))
-                    Image(systemName: "star.of.david.fill")
-                        .font(.system(size: 11, weight: .bold))
-                        .foregroundStyle(LinearGradient(colors: [goldAccent, goldDeep], startPoint: .top, endPoint: .bottomTrailing))
-                        .offset(y: -4)
-                }
-                .frame(width: 24, height: 50)
+                TefilaBanderaMark(width: 26, height: 54)
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(intention.title)
@@ -520,6 +508,36 @@ struct PrayerAudioView: View {
 
     private var spiritualReflection: String {
         "Este pasaje nos recuerda que la bondad de Hashem no depende de nuestras circunstancias. Su rachamim es constante y eterna. Confía, agradece y descansa en Él hoy. Cada tefilá que sube al Cielo lleva consigo la luz de la Torá y la esperanza del pueblo de Israel."
+    }
+
+    /// Fondo de tarjeta: imagen **`Salmo` / `Tefila`** a pantalla + velos (mismo PNG que en `Assets`, p. ej. `ChatBackdropBase` duplicados).
+    @ViewBuilder
+    private func prayerAudioCardBackdropLayer(
+        assetName: String,
+        fallbackColor: Color,
+        washColor: Color,
+        washOpacity: CGFloat,
+        secondaryWash: Color = .clear,
+        secondaryWashOpacity: CGFloat = 0
+    ) -> some View {
+        ZStack {
+            if UIImage(named: assetName) != nil {
+                Image(assetName)
+                    .resizable()
+                    .scaledToFill()
+            } else {
+                fallbackColor
+            }
+
+            washColor.opacity(washOpacity)
+
+            if secondaryWashOpacity > 0 {
+                secondaryWash.opacity(secondaryWashOpacity)
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
     }
 
     private func formatTime(_ seconds: Double) -> String {

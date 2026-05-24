@@ -51,12 +51,12 @@ struct ChatView: View {
                             HStack(spacing: AppChromeHeaderMetrics.hStackSpacing) {
                                 AppChromeHeaderCircleIconButton(
                                     systemName: "chart.bar.fill",
-                                    accessibilityLabel: LocalizedStringKey(TefilaCopy.spiritualProgressHint),
+                                    accessibilityLabel: TefilaCopy.spiritualProgressHint,
                                     action: { shell.goHomeAndFocusKPI() }
                                 )
                                 AppChromeHeaderCircleIconButton(
                                     catalogAssetName: "TefilaNotificationsIcon",
-                                    accessibilityLabel: "Notificaciones",
+                                    accessibilityLabel: TefilaCopy.settingsNotificationsAccent,
                                     action: { shell.openHomeSheet(.notifications) }
                                 )
                             }

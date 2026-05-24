@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 // MARK: - PrayerServiceDetailView (pantalla de detalle de servicio)
 
@@ -10,20 +11,16 @@ struct PrayerServiceDetailView: View {
     @State private var selectedTier: PrayerTier = .standard
     @State private var goToIntention: Bool = false
     @State private var showPreviewSheet: Bool = false
-    @State private var isFavorite: Bool = false
+    @State private var savedToFavoritesPulse: Bool = false
 
     private let goldAccent = Color(red: 236/255, green: 196/255, blue: 95/255)
     private let goldMid    = Color(red: 219/255, green: 175/255, blue: 75/255)
     private let goldDeep   = Color(red: 172/255, green: 128/255, blue: 44/255)
     private let navyInk    = Color(red: 42/255, green: 58/255, blue: 98/255)
-    private let purple     = Color(red: 0.48, green: 0.35, blue: 0.74)
 
     var body: some View {
         ZStack {
-            Image("TefilaHomeBackground")
-                .resizable().scaledToFill().ignoresSafeArea()
-                .accessibilityIgnoresInvertColors(true)
-            Color.white.opacity(0.22).ignoresSafeArea().allowsHitTesting(false)
+            TefilaSpiritualFondoBackdrop(lightVeilOpacity: 0.22)
 
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 16) {
@@ -32,14 +29,14 @@ struct PrayerServiceDetailView: View {
                     tierPicker
                     certificateInfo
                     fundsInfo
-                    requestButton
+
+                    Color.clear.frame(height: 12)
                 }
                 .padding(.horizontal, 18)
                 .padding(.top, 14)
                 .padding(.bottom, 40)
             }
         }
-        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -52,147 +49,87 @@ struct PrayerServiceDetailView: View {
                     .foregroundStyle(goldAccent)
                 }
             }
+            ToolbarItem(placement: .principal) {
+                Text(service.title)
+                    .font(.system(size: 16, weight: .bold, design: .serif))
+                    .foregroundStyle(navyInk)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.78)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: 220)
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
-                        isFavorite.toggle()
-                    }
+                    toggleFavoriteHaptic()
                 } label: {
-                    Image(systemName: isFavorite ? "heart.fill" : "heart")
-                        .font(.system(size: 18))
-                        .foregroundStyle(isFavorite ? Color.red.opacity(0.8) : navyInk.opacity(0.5))
-                        .frame(width: 36, height: 36)
-                        .background(Circle().fill(.white.opacity(0.75)))
+                    ZStack {
+                        TranslucentWhiteCircleChrome(size: 38)
+                        Image(systemName: savedToFavoritesPulse ? "heart.fill" : "heart")
+                            .font(.system(size: 17))
+                            .foregroundStyle(savedToFavoritesPulse ? Color(red: 0.82, green: 0.28, blue: 0.38) : navyInk.opacity(0.55))
+                    }
+                    .shadow(color: .black.opacity(0.06), radius: 4, x: 0, y: 2)
                 }
+                .accessibilityLabel(savedToFavoritesPulse ? "Quitar de favoritos" : "Guardar en favoritos")
             }
+            .sharedBackgroundVisibility(.hidden)
         }
-        .toolbarBackground(.hidden, for: .navigationBar)
+        .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
+        .toolbarColorScheme(.light, for: .navigationBar)
         .environment(\.colorScheme, .light)
         .preferredColorScheme(.light)
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            stickyRequestBar
+        }
+        .sheet(isPresented: $showPreviewSheet) {
+            servicePreviewSheet
+        }
         .navigationDestination(isPresented: $goToIntention) {
             ChoosePrayerIntentionView()
         }
-        .sheet(isPresented: $showPreviewSheet) {
-            previewSheet
-        }
     }
 
-    private var previewSheet: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 18) {
-                    HStack(spacing: 14) {
-                        ZStack {
-                            Circle()
-                                .fill(LinearGradient(colors: [goldAccent, goldDeep], startPoint: .topLeading, endPoint: .bottomTrailing))
-                                .frame(width: 54, height: 54)
-                            Image(systemName: service.iconSystemName)
-                                .font(.system(size: 22, weight: .bold))
-                                .foregroundStyle(.white)
-                        }
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text(service.eyebrow.uppercased())
-                                .font(.system(size: 10, weight: .bold))
-                                .tracking(0.8)
-                                .foregroundStyle(goldMid)
-                            Text(service.title)
-                                .font(.system(size: 18, weight: .bold, design: .serif))
-                                .foregroundStyle(navyInk)
-                        }
-                    }
-
-                    Divider()
-
-                    Text(service.longDescription)
-                        .font(.system(size: 15, weight: .medium))
-                        .foregroundStyle(navyInk.opacity(0.85))
-                        .lineSpacing(4)
-                        .fixedSize(horizontal: false, vertical: true)
-
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(service.spiritualNote)
-                            .font(.system(size: 14, weight: .medium, design: .serif))
-                            .foregroundStyle(navyInk.opacity(0.7))
-                            .italic()
-                            .fixedSize(horizontal: false, vertical: true)
-                        Text(service.rabbiSource)
-                            .font(.system(size: 12, weight: .semibold))
-                            .foregroundStyle(goldMid)
-                    }
-                    .padding(14)
-                    .background {
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .fill(goldAccent.opacity(0.07))
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                    .strokeBorder(goldAccent.opacity(0.3), lineWidth: 1)
-                            }
-                    }
-
-                    Button {
-                        showPreviewSheet = false
-                        goToIntention = true
-                    } label: {
-                        Text("Solicitar esta tefilá")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundStyle(navyInk)
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 14)
-                            .background {
-                                Capsule()
-                                    .fill(LinearGradient(colors: [goldAccent, goldMid], startPoint: .leading, endPoint: .trailing))
-                            }
-                    }
-                    .buttonStyle(.plain)
-                    .padding(.top, 8)
-                }
-                .padding(20)
-            }
-            .navigationTitle("Preview")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cerrar") { showPreviewSheet = false }
-                }
-            }
+    private func toggleFavoriteHaptic() {
+        let gen = UIImpactFeedbackGenerator(style: .medium)
+        gen.prepare()
+        withAnimation(.spring(response: 0.32, dampingFraction: 0.72)) {
+            savedToFavoritesPulse.toggle()
         }
-        .presentationDetents([.medium, .large])
+        gen.impactOccurred(intensity: 0.95)
     }
 
     // MARK: - Header card
 
     private var serviceHeaderCard: some View {
         VStack(spacing: 0) {
-            HStack(alignment: .center, spacing: 16) {
-                // Ícono
-                ZStack {
-                    Circle()
-                        .fill(
-                            LinearGradient(
-                                colors: [goldAccent, goldDeep],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                        .frame(width: 62, height: 62)
-                        .shadow(color: goldDeep.opacity(0.4), radius: 8, x: 0, y: 4)
-                    Image(systemName: service.iconSystemName)
-                        .font(.system(size: 26, weight: .bold))
-                        .foregroundStyle(.white)
-                }
+            HStack(alignment: .top, spacing: 14) {
+                TefilaBanderaMark(width: 38, height: 74)
 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(service.eyebrow.uppercased())
-                        .font(.system(size: 10.5, weight: .bold))
-                        .tracking(0.8)
-                        .foregroundStyle(service.iconColor)
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(spacing: 8) {
+                        Image(systemName: service.iconSystemName)
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundStyle(service.iconColor)
+                        Text(service.eyebrow.uppercased())
+                            .font(.system(size: 10.5, weight: .bold))
+                            .tracking(0.8)
+                            .foregroundStyle(service.iconColor)
+                    }
+
                     Text(service.title)
-                        .font(.system(size: 20, weight: .bold, design: .serif))
+                        .font(.system(size: 21, weight: .bold, design: .serif))
                         .foregroundStyle(navyInk)
-                        .lineLimit(3)
+                        .lineLimit(4)
                         .fixedSize(horizontal: false, vertical: true)
+
+                    if !service.hebrewTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        Text(service.hebrewTitle)
+                            .font(.system(size: 15, weight: .medium))
+                            .foregroundStyle(navyInk.opacity(0.55))
+                            .lineLimit(2)
+                    }
                 }
-                Spacer()
+                Spacer(minLength: 0)
             }
             .padding(.horizontal, 18)
             .padding(.top, 18)
@@ -209,14 +146,13 @@ struct PrayerServiceDetailView: View {
 
             // Preview + duración
             HStack(spacing: 14) {
-                // Preview button
                 Button {
                     showPreviewSheet = true
                 } label: {
                     HStack(spacing: 6) {
                         Image(systemName: "eye.fill")
                             .font(.system(size: 13))
-                        Text("Preview")
+                        Text(TefilaCopy.choose("Vista previa", "Preview", "תצוגה מקדימה"))
                             .font(.system(size: 14, weight: .semibold))
                     }
                     .foregroundStyle(goldMid)
@@ -228,6 +164,7 @@ struct PrayerServiceDetailView: View {
                     }
                 }
                 .buttonStyle(.plain)
+                .accessibilityHint("Muestra el texto y la bendición antes de solicitar.")
 
                 Spacer()
 
@@ -287,12 +224,29 @@ struct PrayerServiceDetailView: View {
                 }
             }
 
-            // Imagen del libro de Tehilim (SF Symbol fallback)
-            Image(systemName: "book.closed.fill")
-                .font(.system(size: 52))
-                .symbolRenderingMode(.hierarchical)
-                .foregroundStyle(service.iconColor.opacity(0.65))
-                .frame(width: 70)
+            VStack(spacing: 10) {
+                Image(systemName: "book.closed.fill")
+                    .font(.system(size: 44))
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundStyle(service.iconColor.opacity(0.7))
+                    .padding(14)
+                    .background {
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .fill(Color.white.opacity(0.72))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                    .strokeBorder(Color.white.opacity(0.95), lineWidth: 1)
+                            }
+                            .shadow(color: .black.opacity(0.06), radius: 6, x: 0, y: 3)
+                    }
+
+                Image(systemName: "waveform.circle.fill")
+                    .font(.system(size: 22))
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundStyle(goldMid.opacity(0.85))
+                    .accessibilityLabel(TefilaCopy.choose("Audio al continuar el flujo", "Audio continues in flow", "השמעה בהמשך"))
+            }
+            .frame(width: 84)
         }
         .padding(18)
         .background {
@@ -312,7 +266,11 @@ struct PrayerServiceDetailView: View {
         VStack(alignment: .leading, spacing: 12) {
             HStack(spacing: 8) {
                 Capsule().fill(goldMid.opacity(0.4)).frame(height: 1)
-                Text("Elija una opción")
+                Text(TefilaCopy.choose(
+                    "Elige una opción",
+                    "Choose an option",
+                    "בחר אפשרות"
+                ))
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundStyle(navyInk.opacity(0.65))
                     .fixedSize()
@@ -328,9 +286,12 @@ struct PrayerServiceDetailView: View {
                         goldMid: goldMid,
                         navyInk: navyInk
                     ) {
-                        withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                        let gen = UIImpactFeedbackGenerator(style: .light)
+                        gen.prepare()
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.82)) {
                             selectedTier = tier
                         }
+                        gen.impactOccurred(intensity: 0.85)
                     }
                 }
             }
@@ -395,44 +356,163 @@ struct PrayerServiceDetailView: View {
         .padding(.horizontal, 4)
     }
 
-    // MARK: - Request button
+    // MARK: - Barra inferior fija + CTA
 
-    private var requestButton: some View {
+    private var stickyRequestBar: some View {
+        VStack(spacing: 0) {
+            primaryRequestButton
+                .padding(.horizontal, 18)
+                .padding(.top, 10)
+                .padding(.bottom, 10)
+        }
+        .frame(maxWidth: .infinity)
+        .background(.regularMaterial)
+        .overlay(alignment: .top) {
+            Divider().opacity(0.35)
+        }
+    }
+
+    private var primaryRequestButton: some View {
         Button {
+            let gen = UIImpactFeedbackGenerator(style: .medium)
+            gen.prepare()
+            gen.impactOccurred(intensity: 0.9)
             goToIntention = true
         } label: {
-            HStack(spacing: 10) {
-                Image(systemName: "star.of.david.fill")
-                    .font(.system(size: 15, weight: .bold))
-                Text("Solicitar esta tefilá · $9.00")
+            HStack(spacing: 12) {
+                TefilaBanderaMark(width: 26, height: 48)
+                Text(TefilaCopy.choose(
+                    "Solicitar esta tefilá · $9.00",
+                    "Request this tefilah · $9.00",
+                    "לבקש תפלה זו · ‎$9‎"
+                ))
                     .font(.system(size: 17, weight: .bold))
             }
             .foregroundStyle(navyInk)
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 16)
+            .padding(.vertical, 15)
             .background {
                 Capsule(style: .continuous)
-                    .fill(LinearGradient(
-                        stops: [
-                            .init(color: Color(red: 1, green: 0.93, blue: 0.72), location: 0),
-                            .init(color: goldAccent, location: 0.45),
-                            .init(color: goldMid, location: 1)
-                        ],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    ))
-                    .shadow(color: goldDeep.opacity(0.45), radius: 12, x: 0, y: 6)
+                    .fill(
+                        LinearGradient(
+                            stops: [
+                                .init(color: Color(red: 1, green: 0.93, blue: 0.72), location: 0),
+                                .init(color: goldAccent, location: 0.45),
+                                .init(color: goldMid, location: 1)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .shadow(color: goldDeep.opacity(0.42), radius: 12, x: 0, y: 5)
                     .overlay {
                         Capsule(style: .continuous)
                             .strokeBorder(
-                                LinearGradient(colors: [.white.opacity(0.9), .white.opacity(0.25)], startPoint: .topLeading, endPoint: .bottomTrailing),
+                                LinearGradient(
+                                    colors: [.white.opacity(0.92), .white.opacity(0.22)],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ),
                                 lineWidth: 1.2
                             )
                     }
             }
         }
         .buttonStyle(.plain)
-        .padding(.bottom, 8)
+        .accessibilityHint(TefilaCopy.choose(
+            "Continúa para elegir intención y lugar sagrado",
+            "Continue to choose intention and sacred site",
+            "ממשיכים לבחירת כוונה ומקום קדוש"
+        ))
+    }
+
+    // MARK: - Vista previa (sheet)
+
+    private var servicePreviewSheet: some View {
+        NavigationStack {
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(alignment: .leading, spacing: 18) {
+                    HStack(alignment: .top, spacing: 12) {
+                        TefilaBanderaMark(width: 34, height: 72)
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text(service.title)
+                                .font(.system(size: 20, weight: .bold, design: .serif))
+                                .foregroundStyle(navyInk)
+                            if !service.hebrewTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                                Text(service.hebrewTitle)
+                                    .font(.system(size: 16, weight: .medium))
+                                    .foregroundStyle(navyInk.opacity(0.52))
+                            }
+                        }
+                        Spacer(minLength: 0)
+                    }
+
+                    HStack(spacing: 10) {
+                        Image(systemName: "clock.fill")
+                            .foregroundStyle(goldMid)
+                        Text(service.durationLabel)
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundStyle(navyInk.opacity(0.7))
+                        Spacer()
+                    }
+
+                    Divider().opacity(0.25)
+
+                    Text(service.description)
+                        .font(.system(size: 15, weight: .medium))
+                        .foregroundStyle(navyInk.opacity(0.88))
+                        .lineSpacing(3)
+
+                    Text(service.longDescription)
+                        .font(.system(size: 14.5, weight: .medium))
+                        .foregroundStyle(navyInk.opacity(0.78))
+                        .lineSpacing(4)
+
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(service.spiritualNote)
+                            .font(.system(size: 14, weight: .medium, design: .serif))
+                            .italic()
+                            .foregroundStyle(navyInk.opacity(0.68))
+                            .fixedSize(horizontal: false, vertical: true)
+                        Text(service.rabbiSource)
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundStyle(goldMid)
+                    }
+                    .padding(14)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background {
+                        RoundedRectangle(cornerRadius: 14, style: .continuous)
+                            .fill(goldAccent.opacity(0.08))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                    .strokeBorder(goldAccent.opacity(0.22), lineWidth: 1)
+                            }
+                    }
+                }
+                .padding(.horizontal, 22)
+                .padding(.bottom, 28)
+                .padding(.top, 8)
+            }
+            .navigationTitle(LocalizedStringKey(tefilaDynamic: TefilaCopy.choose("Vista previa", "Preview", "תצוגה מקדימה")))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showPreviewSheet = false
+                    } label: {
+                        Text(TefilaCopy.choose("Listo", "Done", "סיום"))
+                            .fontWeight(.semibold)
+                    }
+                }
+                .sharedBackgroundVisibility(.hidden)
+            }
+            .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
+        }
+        .presentationDetents([.medium, .large])
+        .presentationDragIndicator(.visible)
+        .presentationCornerRadius(22)
+        .preferredColorScheme(.light)
+        .environment(\.colorScheme, .light)
     }
 }
 
@@ -477,6 +557,8 @@ private struct TierOptionButton: View {
             }
         }
         .buttonStyle(.plain)
+        .accessibilityLabel("\(tier.label)")
+        .accessibilityAddTraits(isSelected ? [.isSelected, .isButton] : [.isButton])
     }
 }
 

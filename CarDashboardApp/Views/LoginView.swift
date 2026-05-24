@@ -43,10 +43,13 @@ struct LoginView: View {
         .sheet(isPresented: $showResetSheet) {
             resetPasswordSheet
         }
-        .alert("Ayuda", isPresented: $showHelpAlert) {
-            Button("OK", role: .cancel) {}
+        .alert(LocalizedStringKey(tefilaDynamic: TefilaCopy.loginHelpTitle), isPresented: $showHelpAlert) {
+            Button(role: .cancel) {
+            } label: {
+                Text(TefilaCopy.loginOK)
+            }
         } message: {
-            Text("Próximamente podrás obtener ayuda desde aquí.")
+            Text(TefilaCopy.loginHelpMessage)
         }
         .onAppear {
             phase = .welcome
@@ -57,7 +60,10 @@ struct LoginView: View {
 
     private var welcomeLayer: some View {
         ZStack {
-            TefilaFondoMiOracionBackground(lightVeilOpacity: 0.28)
+            LoginAuthVideoBackdrop(
+                videoWhiteVeilOpacity: 0.14,
+                fallbackSpiritualVeilOpacity: 0.28
+            )
 
             VStack(spacing: 0) {
                 Image("LogoBlanco")
@@ -85,7 +91,7 @@ struct LoginView: View {
                 phase = .signIn
                 auth.lastErrorMessage = nil
             } label: {
-                Text("Iniciar sesión")
+                Text(TefilaCopy.loginWelcomeSignIn)
                     .font(.system(size: 17, weight: .semibold))
                     .frame(maxWidth: .infinity)
                     .frame(height: 54)
@@ -103,7 +109,7 @@ struct LoginView: View {
                 phase = .signUp
                 auth.lastErrorMessage = nil
             } label: {
-                Text("Crear cuenta")
+                Text(TefilaCopy.loginWelcomeSignUp)
                     .font(.system(size: 17, weight: .semibold))
                     .foregroundStyle(welcomePrimaryBlue)
                     .frame(maxWidth: .infinity)
@@ -143,7 +149,10 @@ struct LoginView: View {
 
     private var innerAuthLayer: some View {
         ZStack {
-            TefilaFondoMiOracionBackground(lightVeilOpacity: 0.5)
+            LoginAuthVideoBackdrop(
+                videoWhiteVeilOpacity: 0.26,
+                fallbackSpiritualVeilOpacity: 0.5
+            )
 
             VStack(spacing: 0) {
                 HStack {
@@ -163,14 +172,14 @@ struct LoginView: View {
                     VStack(alignment: .leading, spacing: 18) {
                         if phase == .signIn {
                             SectionHeader(
-                                title: "Nos alegra verte de nuevo · ברוכים הבאים",
-                                subtitle: "Introduce el correo y la contraseña de tu cuenta Tefila.",
+                                title: TefilaCopy.loginSignInTitle,
+                                subtitle: TefilaCopy.loginSignInSubtitle,
                                 inkOnVideoBackdrop: true
                             )
                         } else {
                             SectionHeader(
-                                title: "Crea tu cuenta",
-                                subtitle: "Usa tu correo para registrar Tefila y sincronizar preferencias cuando actives tu cuenta.",
+                                title: TefilaCopy.loginSignUpTitle,
+                                subtitle: TefilaCopy.loginSignUpSubtitle,
                                 inkOnVideoBackdrop: true
                             )
                         }
@@ -179,7 +188,7 @@ struct LoginView: View {
                             TextField(
                                 "",
                                 text: $email,
-                                prompt: Text("Correo electrónico").foregroundStyle(Color.black.opacity(0.38))
+                                prompt: Text(TefilaCopy.loginEmailPlaceholder).foregroundStyle(Color.black.opacity(0.38))
                             )
                             .textContentType(.emailAddress)
                             .keyboardType(.emailAddress)
@@ -192,7 +201,7 @@ struct LoginView: View {
                             SecureField(
                                 "",
                                 text: $password,
-                                prompt: Text("Contraseña").foregroundStyle(Color.black.opacity(0.38))
+                                prompt: Text(TefilaCopy.loginPasswordPlaceholder).foregroundStyle(Color.black.opacity(0.38))
                             )
                             .textContentType(phase == .signUp ? .newPassword : .password)
                             .foregroundStyle(Color.black.opacity(0.9))
@@ -206,23 +215,29 @@ struct LoginView: View {
                         }
 
                         if phase == .signIn {
-                            Button("¿Olvidaste la contraseña?") {
+                            Button {
                                 resetEmail = email
                                 showResetSheet = true
+                            } label: {
+                                Text(TefilaCopy.loginForgotPassword)
                             }
                             .font(.system(size: 14, weight: .medium))
                             .foregroundStyle(authLinkBlue)
 
-                            Button("¿No tienes cuenta? Crear cuenta") {
+                            Button {
                                 phase = .signUp
                                 auth.lastErrorMessage = nil
+                            } label: {
+                                Text(TefilaCopy.loginNoAccount)
                             }
                             .font(.system(size: 14, weight: .medium))
                             .foregroundStyle(authLinkBlue)
                         } else {
-                            Button("¿Ya tienes cuenta? Iniciar sesión") {
+                            Button {
                                 phase = .signIn
                                 auth.lastErrorMessage = nil
+                            } label: {
+                                Text(TefilaCopy.loginHasAccount)
                             }
                             .font(.system(size: 14, weight: .medium))
                             .foregroundStyle(authLinkBlue)
@@ -249,7 +264,7 @@ struct LoginView: View {
                             ProgressView()
                                 .tint(canSubmit ? .white : Color.black.opacity(0.35))
                         }
-                        Text("Continuar")
+                        Text(TefilaCopy.loginContinue)
                             .font(.system(size: 17, weight: .semibold))
                     }
                     .frame(maxWidth: .infinity)
@@ -297,7 +312,7 @@ struct LoginView: View {
         NavigationStack {
             Form {
                 Section {
-                    TextField("Correo", text: $resetEmail)
+                    TextField(TefilaCopy.loginResetShortEmail, text: $resetEmail)
                         .textContentType(.emailAddress)
                         .keyboardType(.emailAddress)
                         .textInputAutocapitalization(.never)
@@ -309,20 +324,24 @@ struct LoginView: View {
                     }
                 }
             }
-            .navigationTitle("Recuperar acceso")
+            .navigationTitle(LocalizedStringKey(tefilaDynamic: TefilaCopy.loginResetNavTitle))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cerrar") {
+                    Button {
                         showResetSheet = false
                         resetInfo = nil
+                    } label: {
+                        Text(TefilaCopy.loginClose)
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Enviar") {
+                    Button {
                         Task {
                             resetInfo = await auth.resetPassword(email: resetEmail)
                         }
+                    } label: {
+                        Text(TefilaCopy.loginSend)
                     }
                 }
             }

@@ -26,36 +26,41 @@ struct DashboardHomeVideoBackdrop: View {
 
 // MARK: - Resto de secciones (sin vídeo)
 
-/// Fondo estático con el mismo velo que el inicio, **sin** reproducir vídeo (hojas, chat, etc.).
+/// Fondo Perfil/Ajustes (y cromados Revolut): imagen celestial unificada, **sin** el vídeo de Inicio.
 struct DashboardHomeBackdropImage: View {
     var body: some View {
-        ZStack {
-            DashboardHomeStaticBackdropBase()
-            DashboardHomeVideoAtmosphereOverlay()
-        }
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .clipped()
-        .ignoresSafeArea()
-        .allowsHitTesting(false)
-        .accessibilityHidden(true)
+        TefilaSpiritualFondoBackdrop(lightVeilOpacity: 0.32)
     }
 }
 
-// MARK: - Mis oraciones + autenticación (`FondoMiOracion`)
+// MARK: - Fondo unificado “Mis oraciones” (`FondoMisOraciones1`) — **todas menos Inicio**
 
-/// Arte del catálogo `FondoMiOracion.imageset` — pantalla Mis oraciones, inicio sesión y registro.
-struct TefilaFondoMiOracionBackground: View {
-    /// Velo blanco encima del arte para texto y tarjetas legibles.
+/// Imagen celestial unificada: `FondoMisOraciones1` → fallback `FondoMiOracion` → `TefilaHomeBackground`.
+/// Inicio (`DashboardView`) sigue usando su propio fondo/vídeo.
+struct TefilaSpiritualFondoBackdrop: View {
+    /// Velo blanco sobre la imagen para legibilidad.
     var lightVeilOpacity: CGFloat = 0.38
 
     var body: some View {
         ZStack {
-            Image("FondoMiOracion")
-                .resizable()
-                .scaledToFill()
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                .clipped()
-                .accessibilityIgnoresInvertColors(true)
+            Group {
+                if UIImage(named: "FondoMisOraciones1") != nil {
+                    Image("FondoMisOraciones1")
+                        .resizable()
+                        .scaledToFill()
+                } else if UIImage(named: "FondoMiOracion") != nil {
+                    Image("FondoMiOracion")
+                        .resizable()
+                        .scaledToFill()
+                } else {
+                    Image("TefilaHomeBackground")
+                        .resizable()
+                        .scaledToFill()
+                }
+            }
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+            .clipped()
+            .accessibilityIgnoresInvertColors(true)
 
             Color.white.opacity(lightVeilOpacity)
                 .allowsHitTesting(false)
@@ -65,6 +70,44 @@ struct TefilaFondoMiOracionBackground: View {
         .ignoresSafeArea()
         .allowsHitTesting(false)
         .accessibilityHidden(true)
+    }
+}
+
+// MARK: - Login (`login.mp4`)
+
+/// Fondo para login/registro: bucle **`login.mp4`** (silenciado). Si falta el archivo, mismo fondo que `TefilaSpiritualFondoBackdrop`.
+struct LoginAuthVideoBackdrop: View {
+    /// Velo cuando el recurso es vídeo (legibilidad del formulario).
+    var videoWhiteVeilOpacity: CGFloat = 0.18
+    /// Velo del fallback cuando no existe `login.mp4`.
+    var fallbackSpiritualVeilOpacity: CGFloat = 0.38
+
+    var body: some View {
+        ZStack {
+            if let url = Bundle.main.url(forResource: "login", withExtension: "mp4") {
+                MutedLoopingVideoFillRepresentable(url: url)
+                Color.white.opacity(videoWhiteVeilOpacity)
+                    .allowsHitTesting(false)
+            } else {
+                TefilaSpiritualFondoBackdrop(lightVeilOpacity: fallbackSpiritualVeilOpacity)
+            }
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        .clipped()
+        .ignoresSafeArea()
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
+    }
+}
+
+// MARK: - Mis oraciones + autenticación (nombre histórico)
+
+/// Alias sobre `TefilaSpiritualFondoBackdrop` — mismo arte que el resto de pantallas fuera de Inicio.
+struct TefilaFondoMiOracionBackground: View {
+    var lightVeilOpacity: CGFloat = 0.38
+
+    var body: some View {
+        TefilaSpiritualFondoBackdrop(lightVeilOpacity: lightVeilOpacity)
     }
 }
 

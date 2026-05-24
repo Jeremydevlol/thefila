@@ -29,18 +29,7 @@ struct PassagesView: View {
 
     var body: some View {
         ZStack {
-            // Fondo celestial (mismo tratamiento que Inicio: recorte + safe area).
-            Image("TefilaHomeBackground")
-                .resizable()
-                .scaledToFill()
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                .clipped()
-                .accessibilityIgnoresInvertColors(true)
-                .ignoresSafeArea()
-
-            Color.white.opacity(0.38)
-                .ignoresSafeArea()
-                .allowsHitTesting(false)
+            TefilaSpiritualFondoBackdrop(lightVeilOpacity: 0.38)
 
             VStack(spacing: 0) {
                 // Cabecera: misma posición que Inicio (barra de navegación nativa oculta + padding app chrome).
@@ -248,36 +237,9 @@ struct PassageCardRow: View {
     // MARK: - Cinta de pasaje
 
     private var passageRibbon: some View {
-        ZStack {
-            // Flag shape (cinta con punta)
-            PassageRibbonShape()
-                .fill(
-                    LinearGradient(
-                        colors: [
-                            Color(red: 0.48, green: 0.35, blue: 0.74),
-                            Color(red: 0.35, green: 0.25, blue: 0.60)
-                        ],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
-                .overlay {
-                    PassageRibbonShape()
-                        .stroke(Color.white.opacity(0.35), lineWidth: 0.75)
-                }
-                .shadow(color: Color(red: 0.35, green: 0.25, blue: 0.60).opacity(0.4), radius: 4, x: 0, y: 2)
-
-            // Maguén David dorado
-            Image(systemName: "star.of.david.fill")
-                .font(.system(size: 13, weight: .bold))
-                .foregroundStyle(
-                    LinearGradient(colors: [goldAccent, goldDeep], startPoint: .top, endPoint: .bottom)
-                )
-                .offset(y: -6)
-        }
-        .frame(width: 28, height: 62)
-        .offset(x: 10, y: -4)
-        .zIndex(1)
+        TefilaBanderaMark(width: 28, height: 62)
+            .offset(x: 10, y: -4)
+            .zIndex(1)
     }
 }
 
@@ -301,6 +263,49 @@ struct PassageRibbonShape: Shape {
     }
 }
 
+// MARK: - Bandera de catálogo (`bandera`)
+
+struct TefilaBanderaMark: View {
+    var width: CGFloat = 28
+    var height: CGFloat = 62
+
+    private let goldAccent = Color(red: 236 / 255, green: 196 / 255, blue: 95 / 255)
+    private let goldDeep = Color(red: 172 / 255, green: 128 / 255, blue: 44 / 255)
+    private let purple = Color(red: 0.48, green: 0.35, blue: 0.74)
+
+    var body: some View {
+        Group {
+            if UIImage(named: "bandera") != nil {
+                Image("bandera")
+                    .resizable()
+                    .scaledToFit()
+                    .shadow(color: purple.opacity(0.38), radius: 4, x: 0, y: 2)
+            } else {
+                ZStack {
+                    PassageRibbonShape()
+                        .fill(
+                            LinearGradient(
+                                colors: [purple, purple.opacity(0.75)],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                        .overlay { PassageRibbonShape().stroke(Color.white.opacity(0.35), lineWidth: 0.75) }
+                        .shadow(color: purple.opacity(0.45), radius: 4, x: 0, y: 2)
+                    Image(systemName: "star.of.david.fill")
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(
+                            LinearGradient(colors: [goldAccent, goldDeep], startPoint: .top, endPoint: .bottom)
+                        )
+                        .offset(y: -6)
+                }
+            }
+        }
+        .frame(width: width, height: height)
+        .accessibilityHidden(true)
+    }
+}
+
 // MARK: - PassageDetailView
 
 struct PassageDetailView: View {
@@ -315,30 +320,14 @@ struct PassageDetailView: View {
 
     var body: some View {
         ZStack {
-            Image("TefilaHomeBackground")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
-                .accessibilityIgnoresInvertColors(true)
-            Color.white.opacity(0.22).ignoresSafeArea().allowsHitTesting(false)
+            TefilaSpiritualFondoBackdrop(lightVeilOpacity: 0.22)
 
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 20) {
                     // Hero header
                     VStack(spacing: 10) {
-                        // Cinta grande
-                        ZStack {
-                            PassageRibbonShape()
-                                .fill(LinearGradient(colors: [purple, purple.opacity(0.75)], startPoint: .top, endPoint: .bottom))
-                                .overlay { PassageRibbonShape().stroke(Color.white.opacity(0.4), lineWidth: 1) }
-                                .shadow(color: purple.opacity(0.45), radius: 8, x: 0, y: 4)
-                            Image(systemName: "star.of.david.fill")
-                                .font(.system(size: 22, weight: .bold))
-                                .foregroundStyle(LinearGradient(colors: [goldAccent, goldDeep], startPoint: .top, endPoint: .bottom))
-                                .offset(y: -8)
-                        }
-                        .frame(width: 48, height: 98)
-                        .padding(.top, 20)
+                        TefilaBanderaMark(width: 48, height: 98)
+                            .padding(.top, 20)
 
                         Text(passage.title)
                             .font(.system(size: 26, weight: .bold, design: .serif))
@@ -389,6 +378,7 @@ struct PassageDetailView: View {
                     .foregroundStyle(goldAccent)
                 }
             }
+            .sharedBackgroundVisibility(.hidden)
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: { passage.isFavorite.toggle() }) {
                     Image(systemName: passage.isFavorite ? "heart.fill" : "heart")
@@ -396,6 +386,7 @@ struct PassageDetailView: View {
                         .foregroundStyle(passage.isFavorite ? Color(red: 0.82, green: 0.28, blue: 0.38) : navyInk.opacity(0.5))
                 }
             }
+            .sharedBackgroundVisibility(.hidden)
         }
         .toolbarBackground(.hidden, for: .navigationBar)
         .environment(\.colorScheme, .light)

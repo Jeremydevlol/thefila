@@ -117,17 +117,7 @@ struct FavoritesView: View {
 
     var body: some View {
         ZStack {
-            Image("TefilaHomeBackground")
-                .resizable()
-                .scaledToFill()
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                .clipped()
-                .accessibilityIgnoresInvertColors(true)
-                .ignoresSafeArea()
-
-            Color.white.opacity(0.38)
-                .ignoresSafeArea()
-                .allowsHitTesting(false)
+            TefilaSpiritualFondoBackdrop(lightVeilOpacity: 0.38)
 
             VStack(spacing: 0) {
                 DashboardHomeTopBar(
@@ -310,8 +300,12 @@ struct FavoritesView: View {
                     .foregroundStyle(accent.ink)
                 Spacer()
                 Menu {
-                    Button(TefilaCopy.choose("Más recientes", "Most recent", "העדכניים ביותר"), action: {})
-                    Button(TefilaCopy.choose("Por libro", "By book", "לפי ספר"), action: {})
+                    Button(action: {}) {
+                        Text(TefilaCopy.choose("Más recientes", "Most recent", "העדכניים ביותר"))
+                    }
+                    Button(action: {}) {
+                        Text(TefilaCopy.choose("Por libro", "By book", "לפי ספר"))
+                    }
                 } label: {
                     HStack(spacing: 4) {
                         Text(TefilaCopy.choose("Más recientes", "Most recent", "העדכניים ביותר"))

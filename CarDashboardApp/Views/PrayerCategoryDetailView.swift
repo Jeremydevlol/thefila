@@ -17,18 +17,7 @@ struct PrayerCategoryDetailView: View {
 
     var body: some View {
         ZStack {
-            // Fondo cielo igual que la pantalla de inicio
-            Image("TefilaHomeBackground")
-                .resizable()
-                .scaledToFill()
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                .clipped()
-                .accessibilityIgnoresInvertColors(true)
-                .ignoresSafeArea()
-
-            Color.white.opacity(0.30)
-                .ignoresSafeArea()
-                .allowsHitTesting(false)
+            TefilaSpiritualFondoBackdrop(lightVeilOpacity: 0.30)
 
             VStack(spacing: 0) {
                 // ── Encabezado ──────────────────────────────────────────────
@@ -73,6 +62,7 @@ struct PrayerCategoryDetailView: View {
                     .foregroundStyle(goldAccent)
                 }
             }
+            .sharedBackgroundVisibility(.hidden)
         }
         .toolbarBackground(.hidden, for: .navigationBar)
         .environment(\.colorScheme, .light)

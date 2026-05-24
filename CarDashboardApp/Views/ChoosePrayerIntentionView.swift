@@ -31,15 +31,7 @@ struct ChoosePrayerIntentionView: View {
 
     var body: some View {
         ZStack {
-            // Fondo celestial
-            Image("TefilaHomeBackground")
-                .resizable()
-                .scaledToFill()
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                .clipped()
-                .ignoresSafeArea()
-                .accessibilityIgnoresInvertColors(true)
-            Color.white.opacity(0.18).ignoresSafeArea().allowsHitTesting(false)
+            TefilaSpiritualFondoBackdrop(lightVeilOpacity: 0.18)
 
             VStack(spacing: 0) {
                 stepIndicator
@@ -71,17 +63,17 @@ struct ChoosePrayerIntentionView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button { dismiss() } label: {
-                    HStack(spacing: 4) {
-                        Image(systemName: "chevron.left").font(.system(size: 14, weight: .semibold))
-                    }
-                    .foregroundStyle(goldAccent)
-                    .frame(width: 36, height: 36)
-                    .background {
-                        Circle().fill(.white.opacity(0.82))
-                            .shadow(color: .black.opacity(0.08), radius: 6, x: 0, y: 2)
-                    }
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundStyle(goldAccent)
+                        .frame(width: AppChromeHeaderMetrics.circleButtonSize, height: AppChromeHeaderMetrics.circleButtonSize)
+                        .background {
+                            TranslucentWhiteCircleChrome(size: AppChromeHeaderMetrics.circleButtonSize)
+                        }
                 }
+                .buttonStyle(.plain)
             }
+            .sharedBackgroundVisibility(.hidden)
         }
         .toolbarBackground(.hidden, for: .navigationBar)
         .environment(\.colorScheme, .light)

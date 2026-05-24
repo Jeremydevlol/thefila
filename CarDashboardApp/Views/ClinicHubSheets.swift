@@ -58,7 +58,7 @@ struct ClinicReportsSheetView: View {
             }
             .environment(\.colorScheme, .light)
             .preferredColorScheme(.light)
-            .navigationTitle(TefilaCopy.choose("Tu camino espiritual", "Spiritual journey", "המסע הרוחני"))
+            .navigationTitle(LocalizedStringKey(tefilaDynamic: TefilaCopy.choose("Tu camino espiritual", "Spiritual journey", "המסע הרוחני")))
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
             .toolbarColorScheme(.light, for: .navigationBar)
@@ -67,6 +67,7 @@ struct ClinicReportsSheetView: View {
                     Button("Cerrar") { dismiss() }
                         .fontWeight(.semibold)
                 }
+                .sharedBackgroundVisibility(.hidden)
             }
         }
     }
@@ -159,7 +160,7 @@ struct ClinicBillingSheetView: View {
             }
             .environment(\.colorScheme, .light)
             .preferredColorScheme(.light)
-            .navigationTitle(TefilaCopy.choose("Ayuda económica comunitaria", "Community gifting", "תמיכה קהילתית"))
+            .navigationTitle(LocalizedStringKey(tefilaDynamic: TefilaCopy.choose("Ayuda económica comunitaria", "Community gifting", "תמיכה קהילתית")))
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
             .toolbarColorScheme(.light, for: .navigationBar)
@@ -168,6 +169,7 @@ struct ClinicBillingSheetView: View {
                     Button("Cerrar") { dismiss() }
                         .fontWeight(.semibold)
                 }
+                .sharedBackgroundVisibility(.hidden)
             }
             .alert("Exportación", isPresented: $showExportHint) {
                 Button("Entendido", role: .cancel) {}
@@ -296,7 +298,7 @@ struct ClinicMoreSheetView: View {
             }
             .environment(\.colorScheme, .light)
             .preferredColorScheme(.light)
-            .navigationTitle(TefilaCopy.choose("Atajos sagrados", "Sacred shortcuts", "קיצורי דרך קדושים"))
+            .navigationTitle(LocalizedStringKey(tefilaDynamic: TefilaCopy.choose("Atajos sagrados", "Sacred shortcuts", "קיצורי דרך קדושים")))
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
             .toolbarColorScheme(.light, for: .navigationBar)
@@ -305,6 +307,7 @@ struct ClinicMoreSheetView: View {
                     Button("Cerrar") { dismiss() }
                         .fontWeight(.semibold)
                 }
+                .sharedBackgroundVisibility(.hidden)
             }
         }
     }
@@ -422,6 +425,7 @@ struct ClinicNotificationsSheetView: View {
                     Button("Cerrar") { dismiss() }
                         .fontWeight(.semibold)
                 }
+                .sharedBackgroundVisibility(.hidden)
             }
         }
     }

@@ -385,17 +385,17 @@ struct AppChromeHeaderCircleIconButton: View {
     }
 
     private let source: IconSource
-    var accessibilityLabel: LocalizedStringKey
+    var accessibilityLabel: String
     var action: () -> Void
 
-    init(systemName: String, accessibilityLabel: LocalizedStringKey, action: @escaping () -> Void) {
+    init(systemName: String, accessibilityLabel: String, action: @escaping () -> Void) {
         source = .sfSymbol(systemName)
         self.accessibilityLabel = accessibilityLabel
         self.action = action
     }
 
     /// Icono vectorial desde `Assets.xcassets` (p. ej. SVG).
-    init(catalogAssetName: String, accessibilityLabel: LocalizedStringKey, action: @escaping () -> Void) {
+    init(catalogAssetName: String, accessibilityLabel: String, action: @escaping () -> Void) {
         source = .assetCatalog(catalogAssetName)
         self.accessibilityLabel = accessibilityLabel
         self.action = action
@@ -419,6 +419,8 @@ struct AppChromeHeaderCircleIconButton: View {
                         .frame(width: 21, height: 21)
                 }
             }
+            .frame(width: AppChromeHeaderMetrics.circleButtonSize, height: AppChromeHeaderMetrics.circleButtonSize)
+            .contentShape(Circle())
         }
         .buttonStyle(.plain)
         .accessibilityLabel(accessibilityLabel)
@@ -538,7 +540,7 @@ struct DashboardHomeTopBar: View {
             } else {
                 AppChromeHeaderCircleIconButton(
                     catalogAssetName: "TefilaNotificationsIcon",
-                    accessibilityLabel: "Notificaciones",
+                    accessibilityLabel: TefilaCopy.settingsNotificationsAccent,
                     action: onNotifications
                 )
             }

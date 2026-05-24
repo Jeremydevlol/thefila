@@ -31,7 +31,7 @@ struct MainTabView: View {
                 }
             }
 
-            Tab("Perfil", systemImage: "person.circle.fill", value: AppShellRouter.Tab.chat) {
+            Tab(TefilaCopy.tabProfile, systemImage: "person.circle.fill", value: AppShellRouter.Tab.chat) {
                 NavigationStack {
                     SettingsView()
                 }

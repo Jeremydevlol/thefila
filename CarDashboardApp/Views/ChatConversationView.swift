@@ -168,9 +168,11 @@ struct ChatConversationView: View {
                     TranslucentWhitePillChrome()
                 }
             }
+            .sharedBackgroundVisibility(.hidden)
             ToolbarItem(placement: .topBarTrailing) {
                 conversationAvatar
             }
+            .sharedBackgroundVisibility(.hidden)
         }
         .onChange(of: selectedPhoto) { _, newItem in
             Task {

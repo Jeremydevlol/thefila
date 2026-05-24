@@ -14,7 +14,7 @@ struct AuthRootView: View {
                 ZStack {
                     Color(.systemGroupedBackground)
                         .ignoresSafeArea()
-                    ProgressView("Conectando…")
+                    ProgressView(LocalizedStringKey(tefilaDynamic: TefilaCopy.authConnecting))
                 }
             } else if !auth.isAuthenticated {
                 LoginView(auth: auth)

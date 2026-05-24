@@ -20,7 +20,7 @@ struct SettingsView: View {
                     profileImage: auth.profileAvatarImage,
                     onProfileTap: {},
                     searchText: $settingsSearchText,
-                    prompt: Text("Buscar")
+                    prompt: Text(TefilaCopy.settingsSearchPlaceholder)
                         .foregroundStyle(Color.black.opacity(DashboardChromeSearchFieldStyle.promptOpacity)),
                     showsSearchClearButton: true,
                     searchFieldFocused: $settingsSearchFieldFocused
@@ -28,12 +28,12 @@ struct SettingsView: View {
                     HStack(spacing: AppChromeHeaderMetrics.hStackSpacing) {
                         AppChromeHeaderCircleIconButton(
                             systemName: "chart.bar.fill",
-                            accessibilityLabel: LocalizedStringKey(TefilaCopy.spiritualProgressHint),
+                            accessibilityLabel: TefilaCopy.spiritualProgressHint,
                             action: { shell.goHomeAndFocusKPI() }
                         )
                         AppChromeHeaderCircleIconButton(
                             catalogAssetName: "TefilaNotificationsIcon",
-                            accessibilityLabel: "Notificaciones",
+                            accessibilityLabel: TefilaCopy.settingsNotificationsAccent,
                             action: { shell.openHomeSheet(.notifications) }
                         )
                     }
@@ -42,6 +42,7 @@ struct SettingsView: View {
 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 12) {
+                        languageSection
                         profileSection
                         widgetsSection
                         accountSection
@@ -56,15 +57,18 @@ struct SettingsView: View {
             }
             .frame(maxWidth: .infinity)
         }
-        .navigationTitle("Ajustes")
+        .navigationTitle(LocalizedStringKey(tefilaDynamic: TefilaCopy.settingsTitle))
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
         .toolbarColorScheme(.light, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Listo") { dismiss() }
-                    .fontWeight(.semibold)
+                Button { dismiss() } label: {
+                    Text(TefilaCopy.settingsDone)
+                        .fontWeight(.semibold)
+                }
             }
+            .sharedBackgroundVisibility(.hidden)
             ToolbarItemGroup(placement: .keyboard) {
                 LiquidGlassKeyboardAccessoryBar {
                     settingsSearchFieldFocused = false
@@ -72,19 +76,70 @@ struct SettingsView: View {
             }
         }
         .confirmationDialog(
-            "¿Cerrar sesión?",
+            LocalizedStringKey(tefilaDynamic: TefilaCopy.settingsSignOutDialogTitle),
             isPresented: $confirmSignOut,
             titleVisibility: .visible
         ) {
-            Button("Cerrar sesión", role: .destructive) {
+            Button(role: .destructive) {
                 dismiss()
                 Task { await auth.signOut() }
+            } label: {
+                Text(TefilaCopy.settingsSignOutDestructive)
             }
-            Button("Cancelar", role: .cancel) {}
+            Button(role: .cancel) {
+            } label: {
+                Text(TefilaCopy.settingsCancel)
+            }
         } message: {
             Text(auth.isAuthenticated
-                ? "Se cerrará tu sesión en la nube en este dispositivo."
-                : "Se borrarán los datos de sesión guardados aquí.")
+                ? TefilaCopy.settingsSignOutDialogMessageAuthenticated
+                : TefilaCopy.settingsSignOutDialogMessageGuest)
+        }
+    }
+
+    // MARK: - Idioma
+
+    private var languageSection: some View {
+        ChromeSettingsCard(cornerRadius: 22, padding: 16) {
+            VStack(alignment: .leading, spacing: 14) {
+                HStack(alignment: .top, spacing: 12) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 8, style: .continuous)
+                            .fill(Color.black.opacity(0.06))
+                            .frame(width: 32, height: 32)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                    .strokeBorder(Color.black.opacity(0.08), lineWidth: 0.5)
+                            }
+
+                        Image(systemName: "globe")
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundStyle(PremiumAccent.tabActive)
+                    }
+
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(TefilaCopy.settingsLanguageSectionTitle)
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundStyle(Color.black.opacity(0.92))
+
+                        Text(TefilaCopy.settingsLanguageSectionSubtitle)
+                            .font(.system(size: 12.5, weight: .medium))
+                            .foregroundStyle(Color.black.opacity(0.48))
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+
+                    Spacer(minLength: 0)
+                }
+
+                Picker("", selection: $settingsVM.appLanguage) {
+                    ForEach(TefilaAppLanguage.allCases) { lang in
+                        Text(lang.segmentLabel).tag(lang)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .labelsHidden()
+                .environment(\.layoutDirection, .leftToRight)
+            }
         }
     }
 
@@ -120,7 +175,7 @@ struct SettingsView: View {
                         .font(.system(size: 20, weight: .bold))
                         .foregroundStyle(Color.black)
 
-                    Text(auth.isAuthenticated ? "Sesión Supabase" : "Acceso directo · sin cuenta")
+                    Text(auth.isAuthenticated ? TefilaCopy.settingsProfileCloud : TefilaCopy.settingsProfileLocal)
                         .font(.system(size: 13, weight: .medium))
                         .foregroundStyle(PremiumAccent.tabActive.opacity(0.9))
                 }
@@ -153,7 +208,7 @@ struct SettingsView: View {
                             .foregroundStyle(PremiumAccent.tabActive)
                     }
 
-                    Text("Los widgets «Tefila · Tanaj» muestran frases del Tanaj (tamaños grandes, mediano y pequeño) y texto compacto en la pantalla de bloqueo. Mantén pulsado el inicio · + · busca «Tefila». Si ya añadiste el widget, el botón de abajo fuerza una actualización.")
+                    Text(TefilaCopy.settingsWidgetsExplainer)
                         .font(.system(size: 13.5, weight: .medium))
                         .foregroundStyle(Color.black.opacity(0.62))
                         .fixedSize(horizontal: false, vertical: true)
@@ -169,7 +224,7 @@ struct SettingsView: View {
                 Button {
                     WidgetCenter.shared.reloadAllTimelines()
                 } label: {
-                    Text("Actualizar widgets ahora")
+                    Text(TefilaCopy.settingsWidgetsReload)
                         .font(.system(size: 15, weight: .semibold))
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
@@ -205,12 +260,12 @@ struct SettingsView: View {
                                 .foregroundStyle(.red.opacity(0.95))
                         }
                         VStack(alignment: .leading, spacing: 2) {
-                            Text("Cerrar sesión")
+                            Text(TefilaCopy.settingsSignOutRowTitle)
                                 .font(.system(size: 15, weight: .semibold))
                                 .foregroundStyle(Color.black)
                             Text(auth.isAuthenticated
                                 ? (auth.userEmail ?? auth.userDisplayName)
-                                : "Sin cuenta vinculada · limpiar sesión local")
+                                : TefilaCopy.settingsSignOutRowSubtitleGuest)
                                 .font(.system(size: 12, weight: .medium))
                                 .foregroundStyle(Color.black.opacity(0.45))
                                 .lineLimit(1)
@@ -239,7 +294,7 @@ struct SettingsView: View {
                 settingsRow(
                     icon: "info.circle.fill",
                     iconColor: PremiumAccent.tabActive,
-                    title: "Versión"
+                    title: TefilaCopy.settingsVersionRow
                 ) {
                     Text("\(settingsVM.appVersion) (\(settingsVM.buildNumber))")
                         .font(.system(size: 13, weight: .medium))

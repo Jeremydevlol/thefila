@@ -136,20 +136,17 @@ struct TranslucentWhiteCircleChrome: View {
     var size: CGFloat = 44
 
     var body: some View {
-        Circle()
-            .fill(.ultraThinMaterial)
-            .environment(\.colorScheme, .light)
-            .frame(width: size, height: size)
-            .background {
-                Circle()
-                    .fill(TranslucentWhiteGlass.fillGradient)
-                    .frame(width: size, height: size)
-            }
-            .overlay {
-                Circle()
-                    .strokeBorder(TranslucentWhiteGlass.strokeGradient, lineWidth: 0.65)
-                    .frame(width: size, height: size)
-            }
+        ZStack {
+            Circle()
+                .fill(TranslucentWhiteGlass.fillGradient)
+            Circle()
+                .fill(.ultraThinMaterial)
+                .environment(\.colorScheme, .light)
+            Circle()
+                .strokeBorder(TranslucentWhiteGlass.strokeGradient, lineWidth: 0.65)
+        }
+        .frame(width: size, height: size)
+        .clipShape(Circle())
     }
 }
 

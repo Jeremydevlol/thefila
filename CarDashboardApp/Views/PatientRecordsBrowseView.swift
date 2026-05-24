@@ -79,7 +79,7 @@ struct PatientRecordsBrowseView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .environment(\.colorScheme, .light)
         .preferredColorScheme(.light)
-        .navigationTitle(TefilaCopy.hebrewNamesNavTitle)
+        .navigationTitle(LocalizedStringKey(tefilaDynamic: TefilaCopy.hebrewNamesNavTitle))
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
         .toolbarColorScheme(.light, for: .navigationBar)

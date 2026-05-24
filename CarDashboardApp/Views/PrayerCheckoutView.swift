@@ -18,14 +18,10 @@ struct PrayerCheckoutView: View {
     private let goldMid    = Color(red: 219/255, green: 175/255, blue: 75/255)
     private let goldDeep   = Color(red: 172/255, green: 128/255, blue: 44/255)
     private let navyInk    = Color(red: 42/255, green: 58/255, blue: 98/255)
-    private let purple     = Color(red: 0.48, green: 0.35, blue: 0.74)
 
     var body: some View {
         ZStack {
-            Image("TefilaHomeBackground")
-                .resizable().scaledToFill().ignoresSafeArea()
-                .accessibilityIgnoresInvertColors(true)
-            Color.white.opacity(0.20).ignoresSafeArea().allowsHitTesting(false)
+            TefilaSpiritualFondoBackdrop(lightVeilOpacity: 0.20)
 
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 18) {
@@ -53,6 +49,7 @@ struct PrayerCheckoutView: View {
                     .foregroundStyle(goldAccent)
                 }
             }
+            .sharedBackgroundVisibility(.hidden)
         }
         .toolbarBackground(.hidden, for: .navigationBar)
         .environment(\.colorScheme, .light)
@@ -106,18 +103,7 @@ struct PrayerCheckoutView: View {
         VStack(alignment: .leading, spacing: 0) {
             // Cabecera de la card con cinta
             HStack(alignment: .center, spacing: 14) {
-                // Cinta morada con Maguén
-                ZStack {
-                    PassageRibbonShape()
-                        .fill(LinearGradient(colors: [purple, purple.opacity(0.75)], startPoint: .top, endPoint: .bottom))
-                        .overlay { PassageRibbonShape().stroke(Color.white.opacity(0.35), lineWidth: 0.75) }
-                        .shadow(color: purple.opacity(0.4), radius: 4, x: 0, y: 2)
-                    Image(systemName: "star.of.david.fill")
-                        .font(.system(size: 14, weight: .bold))
-                        .foregroundStyle(LinearGradient(colors: [goldAccent, goldDeep], startPoint: .top, endPoint: .bottom))
-                        .offset(y: -6)
-                }
-                .frame(width: 32, height: 68)
+                TefilaBanderaMark(width: 32, height: 68)
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(intention.title)

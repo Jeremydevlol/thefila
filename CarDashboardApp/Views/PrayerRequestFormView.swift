@@ -35,14 +35,7 @@ struct PrayerRequestFormView: View {
 
     var body: some View {
         ZStack {
-            Image("TefilaHomeBackground")
-                .resizable()
-                .scaledToFill()
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                .clipped()
-                .ignoresSafeArea()
-                .accessibilityIgnoresInvertColors(true)
-            Color.white.opacity(0.32).ignoresSafeArea().allowsHitTesting(false)
+            TefilaSpiritualFondoBackdrop(lightVeilOpacity: 0.32)
 
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 18) {
@@ -95,6 +88,7 @@ struct PrayerRequestFormView: View {
                     .foregroundStyle(goldAccent)
                 }
             }
+            .sharedBackgroundVisibility(.hidden)
         }
         .toolbarBackground(.hidden, for: .navigationBar)
         .environment(\.colorScheme, .light)

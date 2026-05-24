@@ -33,74 +33,15 @@ private enum PrayerShelfTab: String, CaseIterable, Identifiable {
     }
 }
 
-/// Cinta vertical con punta inferior (banderín / bookmark).
-private struct PrayerRibbonFlagShape: Shape {
-    var cornerRadius: CGFloat = 5
-    var tipDepth: CGFloat = 14
-
-    func path(in rect: CGRect) -> Path {
-        let w = rect.width
-        let h = rect.height
-        let r = min(cornerRadius, w / 4, tipDepth / 2)
-        let tipBaseY = max(rect.minY, h - tipDepth)
-
-        var p = Path()
-        p.move(to: CGPoint(x: r, y: rect.minY))
-        p.addLine(to: CGPoint(x: w - r, y: rect.minY))
-        p.addQuadCurve(
-            to: CGPoint(x: w, y: rect.minY + r),
-            control: CGPoint(x: w, y: rect.minY)
-        )
-        p.addLine(to: CGPoint(x: w, y: tipBaseY))
-        p.addLine(to: CGPoint(x: w / 2, y: h))
-        p.addLine(to: CGPoint(x: rect.minX, y: tipBaseY))
-        p.addLine(to: CGPoint(x: rect.minX, y: rect.minY + r))
-        p.addQuadCurve(
-            to: CGPoint(x: r, y: rect.minY),
-            control: CGPoint(x: rect.minX, y: rect.minY)
-        )
-        p.closeSubpath()
-        return p
-    }
-}
-
-/// Cinta compacta coloreada + Maguén dorada (referencia UI).
+/// Banderín de catálogo `bandera` (misma pieza visual en todas las filas Tehilim).
 private struct PrayerGoldDavidRibbon: View {
-    let ribbonColor: Color
-
-    private let goldTop = Color(red: 236 / 255, green: 196 / 255, blue: 95 / 255)
-    private let goldDeep = Color(red: 172 / 255, green: 128 / 255, blue: 44 / 255)
-
     private let flagW: CGFloat = 29
     private let flagH: CGFloat = 66
 
     var body: some View {
-        ZStack {
-            PrayerRibbonFlagShape(cornerRadius: 5, tipDepth: 13)
-                .fill(
-                    LinearGradient(
-                        colors: [ribbonColor, ribbonColor.opacity(0.78)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
-                .overlay {
-                    PrayerRibbonFlagShape(cornerRadius: 5, tipDepth: 13)
-                        .stroke(Color.white.opacity(0.38), lineWidth: 0.85)
-                }
-                .shadow(color: ribbonColor.opacity(0.35), radius: 4, x: 0, y: 2)
-
-            Image(systemName: "star.of.david.fill")
-                .font(.system(size: 14, weight: .bold))
-                .foregroundStyle(
-                    LinearGradient(colors: [goldTop, goldDeep], startPoint: .top, endPoint: .bottom)
-                )
-                .shadow(color: .black.opacity(0.18), radius: 0.5, x: 0, y: 0.8)
-        }
-        .frame(width: flagW, height: flagH)
-        .padding(.top, -5)
-        .padding(.leading, -1)
-        .accessibilityHidden(true)
+        TefilaBanderaMark(width: flagW, height: flagH)
+            .padding(.top, -5)
+            .padding(.leading, -1)
     }
 }
 
@@ -300,7 +241,7 @@ struct MyPrayersView: View {
         }
         .environment(\.colorScheme, .light)
         .preferredColorScheme(.light)
-        .navigationTitle(TefilaCopy.prayersNavTitle)
+        .navigationTitle(LocalizedStringKey(tefilaDynamic: TefilaCopy.prayersNavTitle))
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.thinMaterial, for: .navigationBar)
         .toolbarColorScheme(.light, for: .navigationBar)
@@ -333,6 +274,7 @@ struct MyPrayersView: View {
                     .foregroundStyle(PremiumAccent.tabActive)
                 }
             }
+            .sharedBackgroundVisibility(.hidden)
         }
     }
 
@@ -535,7 +477,7 @@ struct MyPrayersView: View {
             .allowsHitTesting(false)
 
             HStack(alignment: .center, spacing: 9) {
-                PrayerGoldDavidRibbon(ribbonColor: row.ribbonColor)
+                PrayerGoldDavidRibbon()
 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack(spacing: 8) {

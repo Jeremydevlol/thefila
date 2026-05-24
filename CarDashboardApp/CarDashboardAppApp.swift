@@ -12,6 +12,8 @@ struct CarDashboardAppApp: App {
             AppShellRoot(authVM: authVM)
                 .environmentObject(patientsRegistryVM)
                 .environmentObject(settingsVM)
+                .environment(\.locale, settingsVM.effectiveLocale)
+                .id(settingsVM.languageRevision)
                 .preferredColorScheme(.light)
                 .statusBarIconsLightContent()
         }
