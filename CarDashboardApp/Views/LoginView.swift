@@ -212,6 +212,16 @@ struct LoginView: View {
                                 .font(.system(size: 13, weight: .medium))
                                 .foregroundStyle(.red.opacity(0.9))
                                 .fixedSize(horizontal: false, vertical: true)
+                        } else if let msg = auth.lastInfoMessage {
+                            Text(msg)
+                                .font(.system(size: 13, weight: .medium))
+                                .foregroundStyle(Color(red: 0.1, green: 0.45, blue: 0.25))
+                                .fixedSize(horizontal: false, vertical: true)
+                        } else if !canSubmit {
+                            Text("Introduce un correo válido y una contraseña de al menos 6 caracteres.")
+                                .font(.system(size: 13, weight: .medium))
+                                .foregroundStyle(Color.black.opacity(0.45))
+                                .fixedSize(horizontal: false, vertical: true)
                         }
 
                         if phase == .signIn {
@@ -253,7 +263,10 @@ struct LoginView: View {
                         isBusy = true
                         defer { isBusy = false }
                         if phase == .signUp {
-                            await auth.signUp(email: email, password: password)
+                            let signedIn = await auth.signUp(email: email, password: password)
+                            if !signedIn, auth.lastInfoMessage != nil {
+                                phase = .signIn
+                            }
                         } else {
                             await auth.signIn(email: email, password: password)
                         }

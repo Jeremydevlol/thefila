@@ -254,7 +254,11 @@ struct ClinicMoreSheetView: View {
                         )
                         moreRow(
                             title: TefilaCopy.choose("Preferencias espirituales", "Spiritual preferences", "הגדרות רוח נפשיות"),
-                            subtitle: "Cuenta, idioma · נוסח התפילה",
+                            subtitle: TefilaCopy.choose(
+                                "Cuenta e idioma de la app",
+                                "Account and app language",
+                                "חשבון ושפת האפליקציה"
+                            ),
                             icon: "gearshape.fill",
                             action: {
                                 dismiss()

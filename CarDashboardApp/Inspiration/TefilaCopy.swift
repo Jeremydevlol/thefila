@@ -103,9 +103,9 @@ enum TefilaCopy {
 
     static var loginSignInTitle: String {
         choose(
-            "Nos alegra verte de nuevo · ברוכים הבאים",
-            "Glad to see you · ברוכים הבאים",
-            "ברוכים השבים · שמחים לראותך"
+            "Nos alegra verte de nuevo",
+            "Glad to see you again",
+            "ברוכים השבים"
         )
     }
     static var loginSignInSubtitle: String {
@@ -237,17 +237,17 @@ enum TefilaCopy {
 
     static var homePrimaryCTA: String {
         choose(
-            "Solicitar tefilá personalizada · תפילה",
-            "Request personalized prayer · Tefilah",
+            "Solicitar tefilá personalizada",
+            "Request a personalized prayer",
             "לבקשת תפילה אישית"
         )
     }
 
     static var homeCategoryHeading: String {
         choose(
-            "Elige una intención espiritual · תורה",
-            "Choose a spiritual intention · Torah",
-            "בחירת כוונה רוחנית · תורה"
+            "Elige una intención espiritual",
+            "Choose a spiritual intention",
+            "בחירת כוונה רוחנית"
         )
     }
 
@@ -261,7 +261,7 @@ enum TefilaCopy {
     }
 
     static var inspirationCardTorahAccent: String {
-        choose("תורה · מקור התעוררות", "Torah · daily inspiration", "תורה")
+        choose("Torá · inspiración diaria", "Torah · daily inspiration", "תורה · השראה יומית")
     }
 
     // MARK: - Tefilá (lista principal)

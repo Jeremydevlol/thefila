@@ -15,6 +15,7 @@ final class AuthViewModel: ObservableObject {
     /// Persistido: si es `true` y no hay sesión, la app muestra pantalla de acceso (`LoginView`).
     @Published private(set) var expectsLoginAfterSignOut: Bool
     @Published var lastErrorMessage: String?
+    @Published var lastInfoMessage: String?
     /// Modo invitado: acceso local sin cuenta Supabase.
     @Published private(set) var isGuest: Bool = false
     /// Foto de perfil del usuario con sesión iniciada (`profiles.avatar_url` o metadatos OAuth).
@@ -149,10 +150,12 @@ final class AuthViewModel: ObservableObject {
     func signInAsGuest() {
         isGuest = true
         lastErrorMessage = nil
+        lastInfoMessage = nil
     }
 
     func signIn(email: String, password: String) async {
         lastErrorMessage = nil
+        lastInfoMessage = nil
         let trimmed = email.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty, !password.isEmpty else {
             lastErrorMessage = "Introduce correo y contraseña."
@@ -165,16 +168,17 @@ final class AuthViewModel: ObservableObject {
             persistExpectsLoginAfterSignOut(false)
             scheduleProfileAvatarLoad()
         } catch {
-            lastErrorMessage = error.localizedDescription
+            lastErrorMessage = Self.friendlyAuthErrorMessage(for: error)
         }
     }
 
-    func signUp(email: String, password: String) async {
+    func signUp(email: String, password: String) async -> Bool {
         lastErrorMessage = nil
+        lastInfoMessage = nil
         let trimmed = email.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty, !password.isEmpty else {
             lastErrorMessage = "Introduce correo y contraseña."
-            return
+            return false
         }
         do {
             let response = try await client.auth.signUp(email: trimmed, password: password)
@@ -183,17 +187,21 @@ final class AuthViewModel: ObservableObject {
                 SmileLuxAccountStorage.syncFromSession(s)
                 persistExpectsLoginAfterSignOut(false)
                 scheduleProfileAvatarLoad()
+                return true
             } else {
-                lastErrorMessage =
-                    "Cuenta creada. Si el proyecto exige confirmar el correo, revisa tu bandeja de entrada."
+                lastInfoMessage =
+                    "Cuenta creada para \(trimmed). Revisa tu correo (y spam) y confirma el enlace. Después vuelve aquí e inicia sesión."
+                return false
             }
         } catch {
-            lastErrorMessage = error.localizedDescription
+            lastErrorMessage = Self.friendlyAuthErrorMessage(for: error)
+            return false
         }
     }
 
     func signOut() async {
         lastErrorMessage = nil
+        lastInfoMessage = nil
         profileAvatarTask?.cancel()
         profileAvatarImage = nil
         do {
@@ -218,8 +226,19 @@ final class AuthViewModel: ObservableObject {
             try await client.auth.resetPasswordForEmail(trimmed)
             return "Si existe una cuenta con ese correo, recibirás un enlace para restablecer la contraseña."
         } catch {
-            lastErrorMessage = error.localizedDescription
+            lastErrorMessage = Self.friendlyAuthErrorMessage(for: error)
             return nil
         }
+    }
+
+    private static func friendlyAuthErrorMessage(for error: Error) -> String {
+        let raw = error.localizedDescription.lowercased()
+        if raw.contains("email not confirmed") || raw.contains("not confirmed") {
+            return "Confirma tu correo con el enlace que te enviamos (revisa spam). Luego inicia sesión."
+        }
+        if raw.contains("confirmation email") || raw.contains("sending confirmation") {
+            return "No se pudo enviar el correo de confirmación. En Supabase: Authentication → Providers → Email, desactiva «Confirm email» o configura SMTP."
+        }
+        return error.localizedDescription
     }
 }

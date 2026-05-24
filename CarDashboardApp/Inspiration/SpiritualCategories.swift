@@ -15,26 +15,26 @@ enum SpiritualCategoryID: String, CaseIterable, Identifiable {
     var headline: String {
         switch self {
         case .parnassa:
-            return LocaleTriple.pick("Parnassá", "Parnassah", "פרנסה")
+            return LocaleTriple.pick("Sustento", "Livelihood", "פרנסה")
         case .shalomBayit:
-            return LocaleTriple.pick("Shalom bait", "Peace in the home", "שלום בית")
+            return LocaleTriple.pick("Paz en el hogar", "Peace in the home", "שלום בית")
         case .refua:
-            return LocaleTriple.pick("Refuá shlemá", "Complete healing", "רפואה שלימה")
+            return LocaleTriple.pick("Sanación completa", "Complete healing", "רפואה שלימה")
         case .zeraBeracha:
             return LocaleTriple.pick(
-                "Fertilidad y zera kadosh",
-                "Fertility & holy seed",
+                "Fertilidad y descendencia",
+                "Fertility and family blessing",
                 "זרע ברוך וברכה משפחתית"
             )
         case .shemira:
             return LocaleTriple.pick(
-                "Protección y shemirá",
-                "Protection & watchfulness",
+                "Protección y cuidado",
+                "Protection and watchfulness",
                 "שמירה והסתרה"
             )
         case .hazlacha:
             return LocaleTriple.pick(
-                "Hazlajá beraja",
+                "Éxito con bendición",
                 "Success with blessing",
                 "הצלחה בברכה"
             )
@@ -45,37 +45,37 @@ enum SpiritualCategoryID: String, CaseIterable, Identifiable {
         switch self {
         case .parnassa:
             return LocaleTriple.pick(
-                "Tehilim y tefilá · sustento con dignidad",
-                "Psalms & tefilah · dignified sustenance",
+                "Salmos y oración · sustento digno",
+                "Psalms and prayer · dignified sustenance",
                 "תהילים ותפילה · פרנסה בכבוד"
             )
         case .shalomBayit:
             return LocaleTriple.pick(
-                "Armonía familiar · אהבה",
-                "Family harmony · ahavah",
+                "Armonía familiar y amor",
+                "Family harmony and love",
                 "הרמוניה ביתית · אהבה וסבלנות"
             )
         case .refua:
             return LocaleTriple.pick(
-                "Recuperación con rachamim",
+                "Recuperación con compasión",
                 "Merciful recovery",
                 "רחמים ורפואה גוף־נפש"
             )
         case .zeraBeracha:
             return LocaleTriple.pick(
-                "Mesirut nefesh parental",
+                "Deseo santo de formar familia",
                 "Holy desire for children",
                 "בקשה בהכרת הטוב"
             )
         case .shemira:
             return LocaleTriple.pick(
-                "Cubierta de Shamáyim",
-                "Heavenly covering",
+                "Amparo y cobertura divina",
+                "Heavenly protection",
                 "שמירת שמים ברחמים"
             )
         case .hazlacha:
             return LocaleTriple.pick(
-                "Pasos con kedushá",
+                "Pasos con integridad y santidad",
                 "Success with integrity",
                 "הצלחה בקדושה ויושר"
             )

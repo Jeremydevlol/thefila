@@ -13,7 +13,9 @@ struct DashboardView: View {
     @State private var selectedCategory: SpiritualCategoryID? = nil
     @State private var goToIntention: Bool = false
 
-    private static let tefilaMoments: [TefilaMoment] = spiritualIntentGrid()
+    private var tefilaMoments: [TefilaMoment] {
+        Self.spiritualIntentGrid()
+    }
 
     private static func spiritualIntentGrid() -> [TefilaMoment] {
         SpiritualCategoryID.allCases.map { cat in
@@ -130,7 +132,7 @@ struct DashboardView: View {
                                 .padding(.bottom, 12)
 
                             LazyVGrid(columns: tefilaGridColumns, spacing: 17) {
-                                ForEach(Self.tefilaMoments) { moment in
+                                ForEach(tefilaMoments) { moment in
                                     TefilaMomentTileView(
                                         backdropAssetName: moment.backdropAssetName,
                                         headline: moment.headline,
